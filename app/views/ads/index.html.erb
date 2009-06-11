@@ -1,0 +1,16 @@
+<% title "Manage Ads" %>
+<p><%= link_to "New Ad", new_ad_path %></p>
+<% for ad in @ads %>
+	<div>
+		<p>
+			<%= ad.company %><br />
+			<%= image_tag ad.image_path %><br />
+			<%= link_to ad.url, ad.url %><br />
+		</p>
+		<p class='align_right'>
+			<%= link_to "edit", edit_ad_path(ad) %>
+			<%= link_to "destroy", ad, :method => :delete, :confirm => "Are you sure?" %>
+		</p>
+	</div>
+<% end %>
+

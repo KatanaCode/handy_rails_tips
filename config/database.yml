@@ -1,0 +1,26 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: tips_development
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+
+test:
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
+  
+production:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: thinkers_tipsproduction
+  pool: 5
+  username: thinkers_root
+  password: guapaa11bounce
+  socket: /tmp/mysql.sock

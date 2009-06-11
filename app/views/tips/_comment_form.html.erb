@@ -1,0 +1,26 @@
+<h4 class='align_center'>Leave a comment:</h4>
+<%- form_for [@tip, @comment] do |f| -%>
+	<%= error_messages_for :comment, :header_tag => "p", :header_message => "Your comment can't be posted yet!" %>
+	<p>
+		<%= f.label :name, "Name" %>
+		<%= f.text_field :name, :value => @current_user ? @current_user.username : nil %>
+	</p>
+	<p>
+		<%= f.label :email, "Email" %>
+		<%= f.text_field :email, :value => @current_user ? @current_user.email : nil %>
+		<span class='grey'>(not shown)</span>
+	</p>
+	<p>
+		<%= f.label :url, "Your website" %>
+		<%= f.text_field :url, :value => @current_user ? @current_user.url : nil %>
+		<span class='grey'>(optional)</span>
+	</p>
+	<p>
+		<%= f.label :body, 
+						"Comment<br />(#{link_to 'textile enabled', 
+						"http://www.textism.com/tools/textile/", 
+						:rel => "external"})" %><%= f.text_area :body %>
+	</p>
+	<p><%= show_simple_captcha :distortion => 'med', :label => "Type the letters shown", :object => "comment" %></p>
+	<p class='submit'><%= f.submit "add comment", :disable_with => "adding comment..." %></p>
+<%- end -%>

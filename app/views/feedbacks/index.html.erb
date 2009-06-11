@@ -1,0 +1,15 @@
+<% title "Manage Feedbacks" %>
+
+<table>
+	<caption>Feedback</caption>
+  <tr>
+    <th>Username</th>
+    <th>Message</th>
+  </tr>
+  <% for feedback in @feedbacks %>
+    <tr class='<%= cycle('odd', 'even') %>'>
+      <td><%=h feedback.user.username %></td>			
+      <td><%=h feedback.message %><br /><%= feedback.user.email %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,1 @@
+page[:preview_tip].replace_html tip_body(params[:q]) if current_user.use_ajax

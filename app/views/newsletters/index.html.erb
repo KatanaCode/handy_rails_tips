@@ -1,0 +1,16 @@
+<% title "Manage Newsletters" %>
+<h3>Newsletters</h3>
+<table>
+  <% for newsletter in @newsletters %>
+    <tr>
+			<td><%= "Newsletter - #{newsletter.id}" %></td>
+      <td><%= newsletter.sent_at || link_to("send_now", send_newsletter_path) %></td>
+			<td><%= link_to "show", newsletter %> |
+      <%= content_tag :td, 
+					link_to("edit", edit_newsletter_path(newsletter)) unless newsletter.sent_at %>
+      <%= link_to "destroy", newsletter, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class='align_right'><%= link_to "New Newsletter", new_newsletter_path %></p>

@@ -1,0 +1,30 @@
+<%- div_for user do -%>
+	<div class='gravatar_image'>
+		<%= gravatar_image(user.email, user.username, :size => "100") %>
+	</div>
+	<p class='larger'><strong><%= user.username %></strong></p>
+	<p><strong>email</strong> 
+		<%-  if admin_logged_in? || (logged_in? && user.show_email) -%>
+			<%= mail_to(user.email, nil, :replace_at => "{at}", :replace_dot => "{dot}") %>
+		<%- else -%>
+			<em>private</em>
+		<%- end -%>
+	</p>
+	<p>
+		<strong>my homepage</strong>
+		<%= link_to(user.url, user.url, :rel => "external") if !user.url.empty?%>
+	</p>
+	<p><strong>about</strong> <%= user.about.nil? ? "I haven't written anything here yet." : user.about %></p>
+	<p><strong>kudos</strong> <%= user.kudos %>
+		(<%= link_to "what's this?", "/help#kudos", :class => "smaller" %>)
+	</p>
+	<%- if admin_logged_in? -%>
+		<p>
+			<%= link_to "profile", user %>
+			<%= link_to "destroy", user, :method => :delete, :confirm => "Are you sure?" %>
+		</p>
+	<%- end -%>
+<%- end -%>
+<div class='clear_both'>
+</div>
+	

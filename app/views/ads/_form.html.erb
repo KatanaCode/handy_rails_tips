@@ -1,0 +1,14 @@
+  <%= error_messages_for :ad %>
+  <p>
+    <%= label :ad, :company %><br />
+    <%= text_field :ad, :company %>
+  </p>
+  <p>
+    <%= label :ad, :url %><br />
+    <%= text_field :ad, :url %>
+  </p>
+  <p>
+    <%= label :ad, :image %><br />
+    <%= file_field :ad, :image %>
+  </p>
+  <p><%= submit_tag "save ad", :disable_with => "saving ad..." %></p>

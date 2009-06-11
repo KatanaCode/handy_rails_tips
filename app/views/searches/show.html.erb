@@ -1,0 +1,6 @@
+<%- title  "#{@results.any? ? pluralize(@results.count, 'result') : 
+'Sorry, no results'} found for '#{@this_search.criterion}'"-%>
+<p class='easy_read align_center'><%=  "#{@results.any? ? pluralize(@results.count, 'result') : 
+'Sorry, no results'} found for '#{@this_search.criterion}'"%></p>
+<%= render :partial => "tips/tip", :collection => @results %>
+

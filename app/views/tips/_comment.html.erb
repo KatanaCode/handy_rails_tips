@@ -1,0 +1,38 @@
+<%- div_for comment do -%>
+	<div class='gravatar_image'>
+		<%= gravatar_image(comment.email, comment.name, :size => '60') %>
+	</div>
+	<div class='comment_inner'>
+		<%- content_tag :p do -%>
+				<%= comment.name if comment.url.empty? %>
+				<%= link_to comment.name, comment.url, :rel => 'external' unless comment.url.empty? %>
+		<%- end -%>
+		<p>
+			<%- if comment.safe? || admin_logged_in? -%>
+					<%= redcloth_this comment.body %>
+			<%- else -%>
+				<%= flagged_message("Comment") %>
+			<%- end -%>
+		</p>
+		<p class='align_right clear_both;'><%= comment.created_at.to_formatted_s :main %></p>
+		
+		<%- if @session_comments && @session_comments.include?(comment) -%>
+			<p class='align_right'>
+				(<%= link_to "remove", remove_tip_comment_path(comment.tip, comment)  %>)
+			</p>
+		<%- end -%>
+	</div>
+	<p class='align_right' style='padding:0 1em 0 0;'>
+		<%= link_to "report spam", 
+			flag_tip_comment_path(comment.tip, comment) if comment.state == STATES[:unflagged]%>
+	</p>
+	<%- if admin_logged_in? -%>
+		<p><%= comment.email if admin_logged_in? %></p>
+		<p>state: <%= STATES.invert[comment.state].to_s %></p>
+		<p>
+			<%= link_to "allow", allow_comment_path(comment) %>
+			<%= link_to "remove", remove_comment_path(comment) %>
+			<%= link_to "destroy", comment, :method => :delete %>
+		</p>
+	<%- end -%>
+<%- end -%>

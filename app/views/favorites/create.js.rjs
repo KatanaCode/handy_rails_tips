@@ -1,0 +1,2 @@
+page[:add_to_favorites].replace_html render :partial => "favorites/add_to_faves", :locals => {:favorite => @favorite}
+page[:add_to_favorites].visual_effect :highlight

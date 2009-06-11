@@ -1,0 +1,5 @@
+<% title "New Ad" %>
+<%- form_tag ads_path, :multipart => true do -%>
+	<%= render :partial => 'form' %>
+<%- end -%>
+<p><%= link_to "Back to List", ads_path %></p>

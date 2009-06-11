@@ -1,0 +1,7 @@
+<%- form_for @search do |f| -%>
+	<p>
+		<%= f.text_field :criterion, :value => "search keyword",
+				:onfocus => "this.value = '';this.style.color='#222';" %>
+		<%= f.submit "search", :title => "search" %>
+	</p>
+<%- end -%>

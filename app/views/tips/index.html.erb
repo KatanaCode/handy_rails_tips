@@ -1,0 +1,8 @@
+<% title "Tips" %>
+<p class='align_center' style='background: #E3E3FA;'>
+	Handy Rails Tips is open to everybody who wants to write.  If you'd like to share some of your own 
+	rails tips <%= link_to 'create an account', signup_path %> today.
+</p>
+<!-- <p class='align_right' style='margin: 0 5em 0 0;'><%# link_to '+ write a tip', new_tip_path %></p> -->
+<%= render :partial => "tip", :collection => @tips %>
+<%= will_paginate @tips, :previous_label => "« prev", :next_label => "next »" %>

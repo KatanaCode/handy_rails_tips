@@ -1,0 +1,9 @@
+if current_user.use_ajax
+  current_user.turn_ajax_off
+  page[:preview_tip].hide  
+else
+  current_user.turn_ajax_on
+  page[:preview_tip].show
+end
+@current_user.reload
+page[:preview_options].replace_html render :partial => "preview_options"

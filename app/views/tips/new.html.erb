@@ -1,0 +1,5 @@
+<% title "Write A New Tip" %>
+<% form_for @tip do |f| %>
+	<%= render :partial => 'form', :locals => {:f => f} %>
+	<p class='submit'><%= f.submit "post tip", :disable_with => "posting tip..." %></p>
+<% end %>

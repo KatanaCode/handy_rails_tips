@@ -1,0 +1,12 @@
+<%- title "#{RAILS_ENV}.log" -%>
+<h3><%= "#{RAILS_ENV}.log"  %></h3>
+<p class='align_right smaller'>
+	(<%= link_to "backup log", backup_log_path, 
+			:confirm => "File size is #{@log_size}, are you sure?" %>)<br />(<%= link_to "clear log", clear_log_path, 
+			:confirm => "Are you sure?" %>)
+</p>
+
+<%= content_tag :p, "Log size:" + @log_size, :class=>"align_right" %>
+<div style='height:50em;font-size:0.6em;white-space:pre;overflow:auto;'>
+	<%=h @log_content  %>
+</div>

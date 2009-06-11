@@ -1,0 +1,24 @@
+	<%= f.error_messages %>
+	<%- if @user.new_record? -%>
+		<p><%= f.label :username, "Username" %><%= f.text_field :username %></p>
+	<%- end -%>
+	<p><%= f.label :email, "Email" %><%= f.text_field :email %></p>
+  <p><%= f.label :url, "Your homepage" %><%= f.text_field :url %> (optional)</p>
+	<% unless @user.new_record? %>
+		<p><%= f.label :about, "About me" %><%= f.text_area :about %></p>
+	<% end %>
+	<%-  if @user.new_record?  -%>
+		<p><%= f.label :password, "Password" %><%= f.password_field :password %></p>
+		<p>
+			<%= f.label :password_confirmation, "Re-enter password" %>
+			<%= f.password_field :password_confirmation %>
+		</p>
+	<%- end -%>
+	<p class='check_box'><%= f.label :subscribed, "Send me occasional emails" %><%= f.check_box :subscribed %></p>
+	<p class='check_box'><%= f.label :show_email, "Show my email address on my profile" %><%= f.check_box :show_email %></p>
+	<%- unless @user.new_record? -%>
+		<p class='check_box'>
+			<%= f.label :notify_me, "Email me when someone comments on my tips" %>
+			<%= f.check_box :notify_me %>
+		</p>
+	<%- end -%>

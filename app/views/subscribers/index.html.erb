@@ -1,0 +1,14 @@
+<% title "Subscribers" %>
+
+<table>
+	<caption>Subscribers</caption>
+  <tr>
+    <th>Email</th>
+  </tr>
+  <% for subscriber in @subscribers %>
+    <tr>
+      <td><%= subscriber.email %></td><td><%= link_to 'remove', subscriber, :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+

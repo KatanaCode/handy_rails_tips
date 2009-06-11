@@ -1,0 +1,13 @@
+<%- if logged_in? -%>
+	<%- if favorite -%>
+		<%= link_to_remote("remove from favorites", 
+	 		:url => {:action => :destroy, :controller => "favorites", :id => favorite},
+	 		:method => :delete,
+	 		:html => {:method => :delete, :href => "/favorites/destroy/#{favorite.id}"}) %>
+	<%- else -%>
+		<%= link_to_remote("add to favorites", 
+	 				:url => {:action => "create", :controller => "favorites", :tip_id => @tip.id}, 
+	 				:html => {:href => url_for( :action => :create, :controller => :favorites, 
+																			:tip_id => @tip.id)}) %>
+	<%- end -%>
+<%- end -%>

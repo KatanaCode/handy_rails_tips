@@ -1,0 +1,37 @@
+<%- title "#{h @tip.title}" -%>
+<h3><%= link_to @tip.title, nil, :class => "tip_title_link" %></h3>
+<p class='align_center'>by <%= link_to @user.username, @user %></p>
+<div id='tip_body_div'>
+  <%= tip_body(@tip.body) %>
+</div>
+<p style='border:thin solid silver;margin:0 0.2em;with:auto;padding: 0.4em;' class='smaller'>
+	posted on <%= @tip.created_at.to_formatted_s(:main) %>
+	<%= " - last updated on #{@tip.updated_at.to_formatted_s(:main)}" if @tip.has_changed? %>
+	<script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=d8ddea73-a9e8-4458-9f42-274e75282826&amp;type=website&amp;headerfg=%23f8f8f8&amp;headerbg=%23068ac7&amp;headerTitle=Send%20this%20tip%20via...">
+	</script>
+</p>
+<p class='float_right'>
+	<%-  if this_user_logged_in?(@user) -%>
+		  <%= link_to "edit tip", edit_tip_path(@tip) %> |
+			<%= link_to "remove", remove_tip_path(@tip), :confirm => 'Are you sure?' %>
+	<%- end -%>
+</p>
+<%- unless this_user_logged_in?(@user) -%>
+	<div id="add_to_favorites" class="align_right clear_both">
+		<%= render :partial => 'favorites/add_to_faves', :locals => {:favorite => @favorite} %>
+	</div>
+<%- end -%>
+<%= content_tag :p, link_to("flag as inappropriate", flag_tip_path(@tip), :rel => "nofollow"), :class => "align_right clear_both" if @tip.state == STATES[:unflagged] %>
+<p class='clear_both'>
+	<%= link_to "allow", allow_tip_path(@tip) if admin_logged_in? %>
+	<%= link_to "remove tip", remove_tip_path(@tip) if admin_logged_in? || @current_user == @user  %>
+</p>
+<h5 class="align_center larger">
+	<%= link_to(image_tag("rss.png", :alt => "Comments feed", :class => "rss_image"), 
+				comments_feed_path(:tip_id => @tip.id), :title => "Comments feed", :format => :rss) %>
+	<%= pluralize(@comments.count, "Comment") %>
+				
+</h5>
+<%= render :partial => 'tips/comment', :collection => @comments %>
+<%= render :partial => 'tips/comment_form' %>
+	

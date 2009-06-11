@@ -1,0 +1,10 @@
+<% title "Edit Ads" %>
+
+<%- form_tag({:action => "update"}, {:multipart => true, :method => :put}) do -%>
+	<%= render :partial => 'form' %>
+<%- end -%>
+
+<p>
+  <%= link_to "Show", @ad %> |
+  <%= link_to "View All", ads_path %>
+</p>

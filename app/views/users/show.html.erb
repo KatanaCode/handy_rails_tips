@@ -1,0 +1,5 @@
+<%- title @user.username.capitalize -%>
+<%= render :partial => "user", :object => @user %>
+<div id="user_tips">
+	<%= render :partial => 'tips/tip', :collection => @tips %>
+</div>

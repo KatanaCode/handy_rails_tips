@@ -1,0 +1,39 @@
+<%- title "Help" -%>
+<h3 id='redcloth'>Writing a tip</h3>
+<p class='easy_read'>
+	Writing a tip is really easy!  To add some code, simply wrap your code in xml tags with the name of 
+	the language.<br />
+	So...<br />&lt;ruby&gt;<br />&nbsp;&nbsp;def say_hello
+	<br />&nbsp;&nbsp;&nbsp;&nbsp;puts "hello"<br />&nbsp;&nbsp;end<br />
+	&lt;/ruby&gt;<br />
+	becomes:
+</p>
+<div style='width: 80%;margin: 0 auto'>
+	<%= tip_body("<ruby>def say_hello\n\ \ puts \"hello\"\nend</ruby>") %>
+</div>
+<p class='easy_read'>
+	To add some rhtml (code for the view) use &lt;rhtml&gt;&lt;/rhtml&gt; tags.
+	CSS and YAML are also supported.<br />
+</p>
+<p class='easy_read'>
+	All other html tags will be removed.  Instead, you can style your tip using 
+	<%= link_to "Textile", "http://www.textism.com/tools/textile/", :rel => "external" %>.
+	Textile is a really simple markup language that is then converted to valid html.<br /><br />
+	To make text bold, wrap it in double asterisks<br />
+	eg. **text** => <strong>text</strong><br /><br />
+	To make text italic, wrap it in double underscores<br />
+	eg. __text__ => <em>text</em><br /><br />
+	To add a link, wrap the link text in quotes and insert a colon before the url<br />
+	eg. "Rails Tips":http://handyrailstips.com => <%= link_to "Rails Tips", "http://handyrailstips.com", :rel => "external" %><br />
+	Line breaks and paragraph tags are added automatically.<br />
+</p>
+<p class='easy_read'>
+	For more info on writing using textile visit the <%= link_to "RedCloth Textile reference manual", "http://redcloth.org/textile", :rel => "external" %>.
+</p>
+<p><br /></p>
+<h3 id='kudos'>Kudos</h3>
+<p class='easy_read'>
+	Kudos(/ˈkuːdɒs/)<br/ >
+	Each time someone adds one of your tips to their list of favorites, you earn a kudos. 
+	Kudos is a way to keep track of how other's are responding to your tips.
+</p>

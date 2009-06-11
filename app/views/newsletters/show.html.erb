@@ -1,0 +1,7 @@
+<% title "Newsletters" %>
+<%= redcloth_this(@newsletter.content) %>
+<p class='align_right'>
+	<%= link_to 'send', send_email_newsletter_path(@newsletter), :confirm => "Are you sure you want to send this newsletter?" %> |
+  <%= link_to "edit", edit_newsletter_path(@newsletter) %> |
+  <%= link_to "destroy", @newsletter, :confirm => 'Are you sure?', :method => :delete %>
+</p>

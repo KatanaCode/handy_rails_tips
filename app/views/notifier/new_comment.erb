@@ -1,0 +1,10 @@
+<p>
+	<%= @comment_name %>has left a comment on your tip: <%= link_to @tip.title, url_for(:controller => "tips", :action => "show", :id => @tip, :only_path => false) %>.
+</p>
+<p>
+	If these notifications are annoying, you can turn them off by unchecking "Email me when someone comments on my tips" on the edit profile page.
+	<br />
+	<%= link_to "handyrailstips.com", "http://handyrailstips.com/help#redcloth" %>.
+</p>
+
+

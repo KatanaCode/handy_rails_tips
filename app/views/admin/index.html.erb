@@ -1,0 +1,14 @@
+<%- title "Admin Page" -%>
+<div id="admin_manage_list">
+	Manage...
+	<p><%= link_to "ads", ads_path %></p>
+	<p><%= link_to "feedback", feedbacks_path %></p>
+	<p><%= link_to "users", users_path %></p>
+	<p><%= link_to "tips", tips_path %>(<%= pluralize @flagged_tips_count, "flagged tip" %>)</p>
+	<p><%= link_to "comments", 
+			comments_path %>(<%= pluralize @flagged_comments_count, "flagged comment" %>)</p>
+	<p><%= link_to "newsletters", newsletters_path %>(<%= pluralize @unsent_newsletters_count, "unsent newsletters" %>)</p>
+	<p><%= link_to "searches", searches_path %></p>
+	<p><%= link_to "my profile", my_profile_path %></p>
+	<%= link_to "view log", view_log_path %>
+</div>

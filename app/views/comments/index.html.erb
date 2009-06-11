@@ -1,0 +1,7 @@
+<%- title "Manage Comments" -%>
+<p class='align_center'>
+	<%- %w(all unflagged flagged allowed removed).each do |link| -%>
+		<%= link_to(link, options = {:only => link}, html_options = {:style => "padding: 0 0.4em;"}) %>
+	<%- end -%>
+</p>
+<%= render :partial => 'tips/comment', :collection => @comments %>
