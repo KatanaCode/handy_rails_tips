@@ -14,8 +14,17 @@
 		<strong>my homepage</strong>
 		<%= link_to(user.url, user.url, :rel => "external") if !user.url.empty?%>
 	</p>
-	<p><strong>about</strong> <%= user.about.nil? ? "I haven't written anything here yet." : user.about %></p>
-	<p><strong>kudos</strong> <%= user.kudos %>
+	<p>
+		<strong>about me</strong>
+		<%= user.about.nil? ? "I haven't written anything here yet." : user.about %>
+	</p>
+		<%= link_to image_tag("twitter.gif", :alt => "follow me on twitter"),"http://twitter.com/#{user.twitter_username}", :rel => "external" if user.has_twitter? %>
+		
+		<%= link_to image_tag("wwr.png", :height => 38), "http://www.workingwithrails.com/recommendation/new/person/#{user.working_with_rails_id}", :rel => "external" if user.has_wwr? %>
+
+
+	<!-- kudos not used yet -->
+	<p class='hidden'><strong>kudos</strong> <%= user.kudos %>
 		(<%= link_to "what's this?", "/help#kudos", :class => "smaller" %>)
 	</p>
 	<%- if admin_logged_in? -%>

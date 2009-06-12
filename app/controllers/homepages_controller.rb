@@ -29,4 +29,8 @@ class HomepagesController < ApplicationController
   def help
     
   end
+  
+  def contribute
+    
+  end
 end

@@ -64,6 +64,13 @@ class User < ActiveRecord::Base
     :with => URL_FORMAT, 
     :message => "doesn't look valid", :unless => lambda {|user| user.url.empty?}
   
+  validates_format_of :working_with_rails_id, :allow_blank => true, :allow_nil => true, :with => WORKING_WITH_RAILS_FORMAT, :message => "doesn't look valid"
+  validates_uniqueness_of :working_with_rails_id, :allow_blank => true, :case_sensitive => false,  :allow_nil => true, :message => "already taken"
+
+  validates_format_of :twitter_username, :allow_blank => true,  :allow_nil => true, :with => TWITTER_UN_FORMAT, :message => "doesn't look valid"
+  validates_uniqueness_of :twitter_username, :allow_blank => true,  :allow_nil => true, :case_sensitive => false, :message => "already taken"
+
+  
   validates_permitted :username, :in => RESERVED_NAMES, :message => "is not available"
     
   named_scope :subscribers, :conditions => {:subscribed => true}
@@ -71,6 +78,14 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessor :updating_password
   attr_accessor :old_password
+
+  def has_twitter?
+    twitter_username && twitter_username.length > 0
+  end
+
+  def has_wwr?
+    working_with_rails_id && working_with_rails_id.length > 0
+  end
 
   def reset_token
     update_attribute :token, make_token

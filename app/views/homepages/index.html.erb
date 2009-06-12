@@ -1,7 +1,7 @@
 <%- title "Welcome" -%>
 <p class='align_center' style='background: #E3E3FA;padding:0.5em;'>
-	Handy Rails Tips is open to everybody who wants to write.  If you'd like to share some of your own 
-	rails tips <%= link_to 'create an account', signup_path %> today.
+	Handy Rails Tips is open to everybody who wants to write.<br />
+	If you'd like to share some of your own rails tips <%= link_to 'create an account', signup_path %> today.
 </p>
 <%= render :partial => "tips/tip", :collection => @tips %>
-<p class='align_right'><%= link_to "more »", tips_path %></p>
+<p class='align_right'><%= link_to "more tips »", tips_path %></p>

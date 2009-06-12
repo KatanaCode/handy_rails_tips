@@ -1,10 +1,10 @@
 <%- title "#{h @tip.title}" -%>
-<h3><%= link_to @tip.title, nil, :class => "tip_title_link" %></h3>
+<h2><%= link_to @tip.title, nil, :class => "tip_title_link" %></h2>
 <p class='align_center'>by <%= link_to @user.username, @user %></p>
 <div id='tip_body_div'>
   <%= tip_body(@tip.body) %>
 </div>
-<p style='border:thin solid silver;margin:0 0.2em;with:auto;padding: 0.4em;' class='smaller'>
+<p style='background: #333;color: #ddd;padding: 0.4em' class='smaller'>
 	posted on <%= @tip.created_at.to_formatted_s(:main) %>
 	<%= " - last updated on #{@tip.updated_at.to_formatted_s(:main)}" if @tip.has_changed? %>
 	<script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=d8ddea73-a9e8-4458-9f42-274e75282826&amp;type=website&amp;headerfg=%23f8f8f8&amp;headerbg=%23068ac7&amp;headerTitle=Send%20this%20tip%20via...">
@@ -26,12 +26,11 @@
 	<%= link_to "allow", allow_tip_path(@tip) if admin_logged_in? %>
 	<%= link_to "remove tip", remove_tip_path(@tip) if admin_logged_in? || @current_user == @user  %>
 </p>
-<h5 class="align_center larger">
-	<%= link_to(image_tag("rss.png", :alt => "Comments feed", :class => "rss_image"), 
-				comments_feed_path(:tip_id => @tip.id), :title => "Comments feed", :format => :rss) %>
-	<%= pluralize(@comments.count, "Comment") %>
-				
-</h5>
-<%= render :partial => 'tips/comment', :collection => @comments %>
-<%= render :partial => 'tips/comment_form' %>
+<script>
+var idcomments_acct = 'f6f857ecb1bf718d7c85b1170bf9bbf8';
+var idcomments_post_id;
+var idcomments_post_url;
+</script>
+<span id="IDCommentsPostTitle" style="display:none"></span>
+<script type='text/javascript' src='http://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
 	

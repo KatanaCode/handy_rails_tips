@@ -1,8 +1,13 @@
-<%- div_for tip do -%>
-	<%= content_tag :h3, link_to(tip.title, tip, :class =>"tip_title_link") %>
-	<%= partial_tip_body(tip.short_body) %>
-	<p class='float_right grey'><%= pluralize tip.comments.count, "comment" %></p>
+<div class='listed_tip'>
+	<div class='tip_number'>
+		tip # <%= tip.id %>
+	</div>
+	<%- div_for tip do -%>
+		<%= content_tag :h3, link_to(tip.title, tip, :class =>"tip_title_link") %>
+		<%= partial_tip_body(tip.short_body) %>
+		<p class='float_right grey'><%= pluralize tip.comments.count, "comment" %></p>
+	<%- end -%>
 	<div class='clear_both'>
 		<%= "Status: #{STATES.invert[tip.state]}" if admin_logged_in? %>
 	</div>
-<%- end -%>
+</div>

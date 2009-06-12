@@ -10,104 +10,77 @@
 	<meta name="keywords" content="ruby on rails, tutorials, help, <%= @tip.tag_list if @tip %>" />
 	<title><%= "#{yield(:title)} - #{slogan}" %></title>
 	<%= javascript_include_tag :all %>
-	<%= stylesheet_link_tag %W( reset handyrailstips coderay), :cache => true %>
+	<%= stylesheet_link_tag %W( reset generic application coderay ), :cache => true %>
 	<%= auto_discovery_link_tag :rss, "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" %>
 </head>
 <body>
-	<div id="wrap">
+	<div id="wrapper">
+		<div id="header_div">
+			<%- link_to root_path do -%>
+				<h1 id='main_header'>
+					<span class='hidden'>Handy Rails Tips: Ruby On Rails Tips &amp; Tutorials</span>
+				</h1>
+			<%- end -%>
+			<div id='subscription_div'>
+				<%= subscriber_form "LatestTipsOnHandyrailstipscom", :submit_value => "" %>
+				<div id='rss_div'>
+					<%- link_to rss_path do -%>
+						<span class='hidden'>subscribe via RSS</span>
+					<%- end -%>
+				</div>
+			</div>
+		</div>
+		<div id='navbar'>
+			<ul>
+				<li id='first_li'><%= link_to "home", root_url %></li>
+				<li><%= link_to "tips", tips_url %></li>
+				<li><%= link_to "write a tip", logged_in? ? new_tip_path : contribute_url %></li>
+				<li><%= link_to "about", about_url %></li>
+				<li><%= link_to "login", login_path %></li>
+			</ul>
+			<div id='login'>
+			</div>
+		</div>
 		<div id="content">
-			<div id="login">
-				<p><span>
-					<%- if logged_in? -%>
-							logged in as <%= link_to @current_user.username, 
-								admin_logged_in? ? admin_path : my_profile_path %>
-							(<%= link_to "log out", logout_path %>)
-					<%- else -%>
-						<%= link_to "log in", login_path %> / <%= link_to "create account", signup_path %>
-					<%- end -%>
-					</span>
-				</p>
-			</div>
-			<h1 id='main_header' class='align_center'>
-				<%= link_to(image_tag("logo.png", :alt => "Handy Rails Tips"), 
-							root_path, :title => "Handy Rails Tips") %>
-			</h1>
-			<div id="color_squares">
-				<%= image_tag "dots.png", :alt => "" %>
-			</div>
-			<div id="navbar">
-				<ul id="nav_links">
-					<li class ="blue_background">
-						<% link_to root_path, :id => "home_link", :title => "Home" do %>
-							home
-						<% end %>
-					</li>
-					<li class ="green_background">
-						<% link_to tips_path, :id => "tips_link", :title => "Tips" do %>
-							tips
-						<% end %>
-					</li>
-					<li class ="orange_background">
-						<% link_to about_path, :id => "about_link", :title => "About" do %>
-							about
-						<% end %>
-					</li>
-					<li class ="purple_background">
-						<%- if logged_in? -%>
-							<% link_to new_feedback_path, :id => "contact_link", :title => "Contact" do %>
-								contact
-							<% end %>
-						<%- end -%>
-					</li>
-				</ul>	
-				<%= render :partial => "homepages/search_form" %>
-			</div>
-			<div id="the_meaty_bit">
-				<div id="yield">
-					<%- flash.each do |key, msg| -%>
-					    <%= content_tag :div, msg, :class => "flash", :id => key %>
-					    <%- content_tag :script, :type => "text/javascript" do -%>
-					        setTimeout("new Effect.Fade(\"<%= key %>\");", 10000);
-					    <%- end -%>
-					<%- end -%>
+			<div id="collapse">
+				<div id='yield'>
+					<%= render :partial => 'layouts/flash', :locals => {:flash => flash} %>
 					<%= yield %>
 				</div>
-				<div id="right">
-					<%= render :partial => 'homepages/subscriber_form' %>
-					<%- link_to rss_path do -%>
-						<%= image_tag("rss.png", :alt => "RSS feed", :title => "RSS feed", :class => "rss_image") %>RSS feed
-					<%- end -%>
-					<%= render :partial => 'ads/ad', :collection => @ads %>
-					<p class='align_center'>[<%= link_to("advertise here", advertise_path) %>]<p>
-					<hr />
-					<!-- start amazon widget -->
-					<div class='align_center'>
-						<script type="text/javascript"><!--
-							amazon_ad_tag = "thinksplayg-21"; 
-							amazon_ad_width = "160"; 
-							amazon_ad_height = "600"; 
-							amazon_ad_logo = "hide"; 
-							amazon_ad_link_target = "new"; 
-							amazon_ad_border = "hide"; 
-							amazon_color_text = "333333"; 
-							amazon_color_link = "0D5FEF"; 
-							amazon_color_logo = "FFFFFF"; 
-							amazon_ad_exclude = "php;c;trains;railway;train";
-							amazon_ad_include = "ruby+on+rails;ruby;mysql;behavior+driven+design";
-							amazon_ad_categories = "a"; //-->
-						</script>
-						<script type="text/javascript" src="http://www.assoc-amazon.co.uk/s/ads.js"></script>
-					</div>
-					<!-- end amazon widget -->
-				</div>
 			</div>
+			<div id='right_bar'>
 
+					<%= render :partial => 'layouts/search_form' %>
+
+				<%= render :partial => 'ads/ad', :collection => @ads %>
+				<p class='align_center'>[<%= link_to("advertise here", advertise_path) %>]<p>
+				<hr />
+				<!-- start amazon widget -->
+				<div class='align_center'>
+					<script type="text/javascript"><!--
+						amazon_ad_tag = "thinksplayg-21"; 
+						amazon_ad_width = "160"; 
+						amazon_ad_height = "600"; 
+						amazon_ad_logo = "hide"; 
+						amazon_ad_link_target = "new"; 
+						amazon_ad_border = "hide"; 
+						amazon_color_text = "333333"; 
+						amazon_color_link = "0D5FEF"; 
+						amazon_color_logo = "FFFFFF"; 
+						amazon_ad_exclude = "php;c;trains;railway;train";
+						amazon_ad_include = "ruby+on+rails;ruby;mysql;behavior+driven+design";
+						amazon_ad_categories = "a"; //-->
+					</script>
+					<script type="text/javascript" src="http://www.assoc-amazon.co.uk/s/ads.js"></script>
+				</div>
+				<!-- end amazon widget -->
+			</div>
+		</div>
+		<div id="push">
 		</div>
 	</div>
 	<div id="footer">
-		<p>
-			Site by <%= link_to "Gavin Morrice", "http://gavinmorrice.com" %> - <%= link_to "terms of use", terms_path %>
-		</p>
+		This is the foot
 	</div>
 </body>
 </html>

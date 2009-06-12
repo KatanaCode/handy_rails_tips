@@ -337,5 +337,51 @@ describe User do
     user.valid?
     user.errors.on(:username).should == "is not available"
   end
+  
+  it "should not be valid if working_with_rails_id is not correct format" do
+    user = Factory.build(:user, :working_with_rails_id => 'wrong!')
+    user.valid?
+    user.errors.on(:working_with_rails_id).should == "doesn't look valid"
+  end
+  
+  it "should not be valid if twitter usename is not correct format" do
+    user = Factory.build(:user, :twitter_username => "tes@$-")
+    user.valid?
+    user.errors.on(:twitter_username).should == "doesn't look valid"
+  end
+  
+  it "should not be valid if working_with_rails_id has already been taken" do
+    user = Factory(:user)
+    new_user = Factory.build(:user, :working_with_rails_id => user.working_with_rails_id)
+    new_user.valid?
+    new_user.errors.on(:working_with_rails_id).should == "already taken"
+  end
+  
+  it "should not be valid if twitter_usename has already been taken" do
+    user = Factory(:user)
+    new_user = Factory.build(:user, :twitter_username => user.twitter_username)
+    new_user.valid?
+    new_user.errors.on(:twitter_username).should == "already taken"
+  end
+  
+  it "should return true if has twitter" do
+    user = Factory(:user, :twitter_username => "valid")
+    user.has_twitter.should == true
+  end
+  
+  it "should return false from has_twitter if doesn't have twitter" do
+    user = Factory(:user, :twitter_username => "")
+    user.has_twitter.should == false
+  end
+  
+  it "should return true if has wwr" do
+    user = Factory(:user, :working_with_rails_id => "123-valid")
+    user.has_twitter.should == true
+  end
+  
+  it "should return false from has_wwr if doesn't have wwr" do
+    user = Factory(:user, :working_with_rails_id => "")
+    user.has_twitter.should == false
+  end
 
 end

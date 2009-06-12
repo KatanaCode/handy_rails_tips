@@ -10,10 +10,14 @@ ActionController::Routing::Routes.draw do |map|
   map.logout      "logout",     :controller => "sessions",  :action => "destroy"
   map.notice      "notice",     :controller => "homepages", :action => "notice"
   map.search      "search",     :controller => "searches",  :action => "show"
-  map.about       "about",      :controller => "homepages", :action => "about"
-  map.terms     "terms_of_use", :controller => "homepages", :action => "terms"
-  map.advertise   "advertise",  :controller => "homepages", :action => "advertise"  
-  map.help        "help",       :controller => "homepages", :action => "help"
+
+  map.with_options :controller => "homepages" do |home|
+    home.contribute "contribute",   :action => "contribute"
+    home.about       "about",       :action => "about"
+    home.terms     "terms_of_use",  :action => "terms"
+    home.advertise   "advertise",   :action => "advertise"  
+    home.help        "help",        :action => "help"
+  end
 
   map.view_log    "view_log",   :controller => "admin",     :action => "view_log"
   map.clear_log   "clear_log",  :controller => "admin", :action => "clear_log"

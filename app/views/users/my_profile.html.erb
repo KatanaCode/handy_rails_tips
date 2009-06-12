@@ -1,5 +1,4 @@
 <%- title "My Profile" -%>
-<p class='align_right' style='margin: 0 5em 0 0;'><%= link_to '+ write a tip', new_tip_path %></p>
 <%= render :partial => "user", :object => @current_user %>
 <p class='clear_both'>
 	<%= link_to "edit profile", edit_user_path(@current_user) %><br />
@@ -17,6 +16,4 @@
 <%- for tip in @myfavorites.collect(&:tip) do -%>
 	<p class='larger'><%= link_to tip.title, tip_path(tip) %></p>
 <%- end -%>
-<div class='spacer'>
-	
-</div>
+

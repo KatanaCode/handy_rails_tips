@@ -1,0 +1,6 @@
+					<%- flash.each do |flash_type, message| -%>
+					  <%= content_tag :div, message, :class => "flash", :id => flash_type %>
+					  <% content_tag :script, :type => "text/javascript" do %>
+					    setTimeout("new Effect.Fade('<%= flash_type %>');", 10000);
+					  <% end %>
+					<%- end -%>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta name="author" content="Gavin Morrice">
+	<meta name="rating" content="general" />
+  <meta name="resource-type" content="document" />
+	<meta name="keywords" content="ruby on rails, tutorials, help, <%= @tip.tag_list if @tip %>" />
+	<title><%= "#{yield(:title)} - #{slogan}" %></title>
+	<%= javascript_include_tag :all %>
+	<%= stylesheet_link_tag %W( reset handyrailstips coderay), :cache => true %>
+	<%= auto_discovery_link_tag :rss, "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" %>
+</head>
+<body>
+	<div id="wrap">
+		<div id="content">
+			<div id="login">
+				<p><span>
+					<%- if logged_in? -%>
+							logged in as <%= link_to @current_user.username, 
+								admin_logged_in? ? admin_path : my_profile_path %>
+							(<%= link_to "log out", logout_path %>)
+					<%- else -%>
+						<%= link_to "log in", login_path %> / <%= link_to "create account", signup_path %>
+					<%- end -%>
+					</span>
+				</p>
+			</div>
+			<h1 id='main_header' class='align_center'>
+				<%= link_to(image_tag("logo.png", :alt => "Handy Rails Tips"), 
+							root_path, :title => "Handy Rails Tips") %>
+			</h1>
+			<div id="color_squares">
+				<%= image_tag "dots.png", :alt => "" %>
+			</div>
+			<div id="navbar">
+				<ul id="nav_links">
+					<li class ="blue_background">
+						<% link_to root_path, :id => "home_link", :title => "Home" do %>
+							home
+						<% end %>
+					</li>
+					<li class ="green_background">
+						<% link_to tips_path, :id => "tips_link", :title => "Tips" do %>
+							tips
+						<% end %>
+					</li>
+					<li class ="orange_background">
+						<% link_to about_path, :id => "about_link", :title => "About" do %>
+							about
+						<% end %>
+					</li>
+					<li class ="purple_background">
+						<%- if logged_in? -%>
+							<% link_to new_feedback_path, :id => "contact_link", :title => "Contact" do %>
+								contact
+							<% end %>
+						<%- end -%>
+					</li>
+				</ul>	
+				<%= render :partial => "homepages/search_form" %>
+			</div>
+			<div id="the_meaty_bit">
+				<div id="yield">
+					<%- flash.each do |key, msg| -%>
+					    <%= content_tag :div, msg, :class => "flash", :id => key %>
+					    <%- content_tag :script, :type => "text/javascript" do -%>
+					        setTimeout("new Effect.Fade(\"<%= key %>\");", 10000);
+					    <%- end -%>
+					<%- end -%>
+					<%= yield %>
+				</div>
+				<div id="right">
+					<%= render :partial => 'homepages/subscriber_form' %>
+					<%- link_to rss_path do -%>
+						<%= image_tag("rss.png", :alt => "RSS feed", :title => "RSS feed", :class => "rss_image") %>RSS feed
+					<%- end -%>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div id="footer">
+		<p>
+			Site by <%= link_to "Gavin Morrice", "http://gavinmorrice.com" %> - <%= link_to "terms of use", terms_path %>
+		</p>
+	</div>
+</body>
+</html>

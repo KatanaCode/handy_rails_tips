@@ -30,4 +30,7 @@ q:before, q:after {
 abbr,acronym { 
 	border:0; 
 }
+a{
+	text-decoration: none;
+}
 /*end reset*/

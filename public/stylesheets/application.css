@@ -1,0 +1,355 @@
+/*colors:
+blue #0D5FEF
+green #6CB83A
+orange #F5AD00 
+purple #EC53AD*/
+html {
+	font-family: verdana, helvetica, sans-serif;
+	font-size: 14px;
+	height: 100%;
+}
+body {
+	height: 100%;
+	width: 100%;
+	color: #333;
+	background: #F4F5F5;
+}
+div#wrapper{
+	min-height: 100%;
+	height: auto !important;
+	margin: 0 auto -4em;
+}
+div#header_div{
+	height: 80px;
+	width: 100%;
+	background: #780101 url(/images/black-red.gif) 0 0 repeat-x;
+	border-top: 0.3em solid #333;
+	border-bottom: 0.2em solid #333;
+}
+h1#main_header{
+	height: 100%;
+	width: 460px;
+	background: transparent url(/images/logo2.gif) 0 0 no-repeat;
+	float: left;
+}
+h1#main_header:hover{
+	background: transparent url(/images/logo.gif) 0 0 no-repeat;
+}
+h2{
+	font-size: 1.4em;
+	font-weight: bold;
+	color: inherit;
+}
+div#subscription_div{
+	background: transparent;
+	float: right;
+	margin: 0.5em 4em auto auto;
+}
+
+form#subscribe_form{
+	width: auto;
+	margin: 0.5em 0;
+	height: auto;
+	background: #FFFFFF;
+	border-top: 0.2em solid #331111;
+	border-right: 0.2em solid #773333;
+	border-bottom: 0.2em solid #773333;
+	border-left: 0.2em solid #331111;
+}
+
+#subscribe_form input[type="text"], #subscribe_form input[type="text"]:focus{
+	color: #777;
+	font-size: 1em;
+	width: 10em;
+	height: 18px;
+	padding: 2px;
+	border:none;
+}
+#submit_subscriber{
+	background: #FFFFFF url(/images/mail.gif) 50% 1px no-repeat;
+	height: 20px;
+	width: 33px;
+	border: none;
+	margin: 0 0.2em;
+	cursor: pointer;
+}
+div#rss_div{
+	width: 100%;
+	margin: auto;
+	background: transparent url(/images/subscribe.png) 100% 0 no-repeat;
+	height: 20px;
+	cursor: pointer;
+}
+#rss_div a{
+	color: #FFFFFF;
+	font-size: 1em;
+	margin: auto 0.5em;
+}
+#rss_div:hover{
+	border-bottom: thin solid #FFFFFF;
+}
+div#navbar{
+	height: auto;
+	padding: 0.4em 0;
+	background: #444;
+	border-bottom: 0.2em solid #DDDDDD;
+	overflow: auto;
+}
+#navbar ul{
+	float: right;
+	margin-right: 2em;
+}
+#navbar ul li{
+	float: left;
+	display: block;
+	width: 10em;
+	text-align: center;	
+	padding: 0.2em 0;
+	border-left: thin solid #666;	
+}
+#navbar ul li#first_li{
+	border-left: none;
+}
+#navbar ul li:hover{
+	background: #333333;
+}
+#navbar ul li a{
+	display: inline-block;
+	width: 100%;
+	color: #DDDDDD;
+}
+div#content{
+	height: auto;
+	min-width: 960px !important;
+	width: 100%;
+	background: #F4F5F5 url(/images/grad.png) repeat-x scroll left top;
+	border-bottom: thin solid #111111;
+}
+div#collapse{
+	background: inherit;
+	text-align: center;
+	float: left;
+	min-width: 760px;
+	width: 80%;
+}
+div#yield{
+	text-align: left;
+	margin: auto;
+	width: 760px;
+	padding: 3em;
+}
+
+div#right_bar{
+	background: inherit;
+	float: right;
+	text-align: center;
+	width: 20%;
+}
+#amazoncontent{
+	display:none;
+}
+div#push{
+	height:4em;
+	clear:both;
+}
+div#footer{
+	text-align: center;
+	height: 4em;
+	background: #444;
+	border-top: 0.3em solid #353535;
+	color: #DDDDDD;
+}
+
+
+/*partials */
+
+div.ad{margin: 1.4em 0;clear: both}
+div.gravatar_image{margin: 0 0.2em 0 0;float: left;border:thin solid #AAA;}
+div.user p{margin: 0.2em 0}
+div.tip{
+	width: auto;
+	margin: 2em 1em;
+	background: #FFFFFF;
+}
+.tip p{
+	color: #222;
+	line-height: 1.2em;
+	word-spacing: 0.3em;
+	margin: 1.2em 0
+}
+div.comment{
+	clear:both;
+	margin: 1.5em auto;
+	width: 35em;
+	min-height: 6em;
+	padding: 0.4em;
+	background: #E3E3FA;
+}
+div.comment_inner{width: 29em;float: left}
+div.comment pre{
+	font-family: inherit;
+	background: inherit;
+	color: inherit;
+}
+/*888888888888888888*/
+
+
+.tip_title_link {
+	color: #900;
+	font-size: 1.6em;
+}
+.tip_title_link:visited {color: #733}
+.tip_title_link:active, .tip_title_link:hover, .tip_title_link:focus {color: #F5AD00}
+
+#tip_body_div p{
+	line-height: 1.8em;
+	word-spacing: 0.3em;
+	letter-spacing: 0.01em;
+	margin: 1.2em 0;
+}
+div.listed_tip{margin: 3em auto;}
+div.tip_number{
+	float:left;
+	width: 10%;
+	font-weight: bold;
+	color: #777;
+	padding-top: 2em;
+}
+div.tip{
+	float:right;
+	width: 90%;
+}
+
+div.tip p{
+	line-height: 1.6em;
+	word-spacing: 1em;
+	letter-spacing: 0.01em;
+}
+
+
+
+
+/*start forms*/
+label{
+	text-transform: lowercase;
+}
+fieldset{
+	border-bottom: thin solid #ccc;
+	width: 100%;
+}
+p.submit{
+	margin: 1em auto;
+	text-align: center;
+}
+form[action="/forgot_password/send_email"]{
+	margin: 5em auto;
+	width: 30em;
+}
+form[action="/forgot_password/send_email"] label{
+	margin: 0 0.2em 0 0;
+}
+form[action="/forgot_password/send_email"] p{
+	margin: 1em 0;
+}
+form#login_form{
+	width: 25em;
+	margin: 4em auto 0;
+}
+form#new_tip, form.edit_tip{
+	width: 100%;
+}
+#tip_body{
+	width: 100%;
+	height: 15em;
+	border-width: thin 0 thin 0;
+	border-color: silver;
+	border-style: solid;
+}
+#preview_tip{
+	height: 15em;
+	width: 100%;
+	overflow: auto;
+	clear: both;
+}
+form#new_user, form.edit_user{
+	width: 30em;
+	margin: 2em auto;
+}
+#user_about{
+	height: 10em;
+}
+#new_user p,
+.edit_user p,
+#login_form p{
+	margin: 1.2em 0;
+}
+
+.edit_user label[for='user_email'],
+.edit_user label[for='user_url']{
+	float:left;
+	width: 8em;
+	text-align: right;
+}
+.edit_user label[for='user_old_password'],
+.edit_user label[for='user_password'],
+.edit_user label[for='user_password_confirmation']{
+	float:left;
+	width: 12em;
+	text-align: right;
+	margin: 0 0.2em 0 0;
+}
+.edit_user #user_old_password,
+.edit_user #user_password,
+.edit_user #user_password_confirmation{
+	width: 14em;
+}
+#new_user label, 
+form#login_form label{
+	float: left;
+	width: 14em;
+	text-align: right;
+	margin: 0 0.2em 0 0;
+}
+#new_user input[type='text'], 
+#new_user input[type='password'],
+#login_form input[type='text'], #login_form input[type='password']{
+	width: 12em;
+}
+
+#new_user p.check_box label{
+	width: 24em;
+}
+.edit_user p.check_box label{
+	width: 26em;
+	margin: 0 0.2em 0 0;
+	text-align: left;	
+}
+
+#new_feedback{
+	margin: 2em auto;
+	width: 30em;
+}
+#feedback_message{
+	width: 100%;
+	height: 15em;
+	margin: 1em 0;
+}
+#cse-search-box input[type="text"]{
+	width: 14em;
+}
+/*end forms*/
+
+/*flash notices*/
+div.flash, .errorExplanation {
+	color: #444;
+	text-align: center;
+	margin: 0 auto 1em;
+	padding: 0.5em 2em 2em;
+	font-size: 0.9em;
+	width: 70%;
+}
+div#error, .errorExplanation{background :#FFF3D2;border: thin solid #F5AD00}
+div#warning{background: #fcb;border: thin solid #f99}
+div#notice{background: #efc;border: thin solid #6CB83A}
+
+.field_with_errors{background: #fcb}

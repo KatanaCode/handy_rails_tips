@@ -5,4 +5,4 @@
 </p>
 <!-- <p class='align_right' style='margin: 0 5em 0 0;'><%# link_to '+ write a tip', new_tip_path %></p> -->
 <%= render :partial => "tip", :collection => @tips %>
-<%= will_paginate @tips, :previous_label => "« prev", :next_label => "next »" %>
+<%= will_paginate @tips, :previous_label => "« prev", :next_label => "next »", :class => "align_right" %>

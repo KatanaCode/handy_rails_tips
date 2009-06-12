@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090513094924) do
+ActiveRecord::Schema.define(:version => 20090612113958) do
 
   create_table "ads", :force => true do |t|
     t.string   "url"
@@ -117,23 +117,25 @@ ActiveRecord::Schema.define(:version => 20090513094924) do
   add_index "tips", ["user_id"], :name => "index_tips_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",           :limit => 50, :default => "",   :null => false
-    t.string   "username",        :limit => 15, :default => "",   :null => false
-    t.string   "hashed_password", :limit => 64, :default => "",   :null => false
-    t.string   "url",                           :default => "",   :null => false
-    t.boolean  "show_email",                    :default => true, :null => false
-    t.boolean  "subscribed",                    :default => true, :null => false
-    t.boolean  "notify_me",                     :default => true, :null => false
-    t.boolean  "use_ajax",                      :default => true, :null => false
+    t.string   "email",                 :limit => 50, :default => "",   :null => false
+    t.string   "username",              :limit => 15, :default => "",   :null => false
+    t.string   "hashed_password",       :limit => 64, :default => "",   :null => false
+    t.string   "url",                                 :default => "",   :null => false
+    t.boolean  "show_email",                          :default => true, :null => false
+    t.boolean  "subscribed",                          :default => true, :null => false
+    t.boolean  "notify_me",                           :default => true, :null => false
+    t.boolean  "use_ajax",                            :default => true, :null => false
     t.text     "about"
-    t.string   "token",           :limit => 16, :default => "",   :null => false
-    t.string   "salt",            :limit => 8,  :default => "",   :null => false
-    t.datetime "this_login",                                      :null => false
-    t.datetime "last_login",                                      :null => false
-    t.integer  "role",            :limit => 1,  :default => 2,    :null => false
-    t.integer  "kudos",                         :default => 0,    :null => false
+    t.string   "token",                 :limit => 16, :default => "",   :null => false
+    t.string   "salt",                  :limit => 8,  :default => "",   :null => false
+    t.datetime "this_login",                                            :null => false
+    t.datetime "last_login",                                            :null => false
+    t.integer  "role",                  :limit => 1,  :default => 2,    :null => false
+    t.integer  "kudos",                               :default => 0,    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "twitter_username",      :limit => 15
+    t.string   "working_with_rails_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

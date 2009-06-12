@@ -1,5 +1,5 @@
 <%- title "Edit My Profile" -%>
-<h3>Edit My Profile</h3>
+<h2>Edit My Profile</h2>
 <%- form_for @user do |f| -%>
 	<%= render :partial => 'form', :locals => {:f => f} %>
 	<p class='submit'><%= f.submit "save changes" %></p>

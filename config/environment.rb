@@ -17,6 +17,7 @@ Rails::Initializer.run do |config|
   config.gem "cucumber", :lib => false, :version => '>=0.2.3'
   config.gem "mocha", :lib => false, :version => '>=0.9.5'
   config.gem "thoughtbot-factory_girl", :lib => "factory_girl", :source => "http://gems.github.com"
+  config.gem "markaby", :version => ">=0.5"
   
   config.plugins = [ :all ]
   

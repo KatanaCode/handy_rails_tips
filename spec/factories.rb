@@ -50,4 +50,6 @@ Factory.define :user do |t|
   t.subscribed true
   t.notify_me true
   t.role ROLES[:standard]
+  t.sequence(:twitter_username) { |n| "user_#{n}"}
+  t.sequence(:working_with_rails_url) {|n| "#{n}-name-name"}
 end
