@@ -11,7 +11,7 @@ class TipsController < ApplicationController
   end
   
   def show
-    @tip = Tip.find(params[:id])
+    @tip = Tip.find(params[:id])    
     @user = @tip.user
     @comment = Comment.new
     @comments = @tip.comments
@@ -45,6 +45,7 @@ class TipsController < ApplicationController
   def update
     @tip = Tip.find(params[:id])
     if @tip.update_attributes(params[:tip])
+      expire_fragment(:controller => "tips", :action => "show", :id => @tip.id) # IMPORTANT!!!
       @tip.mark_unflagged
       flash[:notice] = "Successfully updated tip"
       redirect_to @tip

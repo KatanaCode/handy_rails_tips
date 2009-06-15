@@ -1,5 +1,5 @@
-require 'digest/md5'
 module ApplicationHelper
+  require 'digest/md5'
 
   def title title
     content_for :title do

@@ -18,10 +18,11 @@
 		<strong>about me</strong>
 		<%= user.about.nil? ? "I haven't written anything here yet." : user.about %>
 	</p>
+	<p class='align_right'>
 		<%= link_to image_tag("twitter.gif", :alt => "follow me on twitter"),"http://twitter.com/#{user.twitter_username}", :rel => "external" if user.has_twitter? %>
 		
 		<%= link_to image_tag("wwr.png", :height => 38), "http://www.workingwithrails.com/recommendation/new/person/#{user.working_with_rails_id}", :rel => "external" if user.has_wwr? %>
-
+	</p>
 
 	<!-- kudos not used yet -->
 	<p class='hidden'><strong>kudos</strong> <%= user.kudos %>

@@ -29,6 +29,8 @@ module TipsHelper
     remove_braces(body)
   end
   
+  
+  
 
   protected
   

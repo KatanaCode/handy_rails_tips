@@ -27,7 +27,7 @@
 		</p>
 		<p class='grey smaller align_center'><em>eg. 123-firstname-lastname</em> </p>
 		<%- unless @user.new_record? -%>
-			<p><%= f.label :about, "About me" %><%= f.text_area :about %></p>
+			<p><%= f.label :about, "About me" %><br /><%= f.text_area :about %></p>
 		<%- end -%>
 	<%- if @user.new_record? -%></fieldset><% end %>
 	<p class='check_box'>

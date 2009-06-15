@@ -1,7 +1,6 @@
 require "#{Rails.root}/config/initializers/modules.rb"
 require "#{Rails.root}/lib/validations"
 class Comment < ActiveRecord::Base  
-  apply_simple_captcha :message => "The letters you typed were incorrect", :add_to_base => true
   include UrlSorter
 
   attr_protected :state, :tip_id

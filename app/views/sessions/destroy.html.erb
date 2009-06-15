@@ -1,4 +1,4 @@
-<%- title "Logged Out" -%>
-<div class='spacer'>
-</div>
-<p class='easy_read align_center'>You were successfully logged out.</p>
+<%- cache("logout") do -%>
+	<%- title "Logged Out" -%>
+	<p class='easy_read align_center'>You were successfully logged out.</p>
+<%- end -%>

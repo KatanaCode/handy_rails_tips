@@ -5,7 +5,7 @@
 	<%- div_for tip do -%>
 		<%= content_tag :h3, link_to(tip.title, tip, :class =>"tip_title_link") %>
 		<%= partial_tip_body(tip.short_body) %>
-		<p class='float_right grey'><%= pluralize tip.comments.count, "comment" %></p>
+		<p class='float_right grey'><%= comments_count_link(tip, :url => tip_path(tip)) %></p>
 	<%- end -%>
 	<div class='clear_both'>
 		<%= "Status: #{STATES.invert[tip.state]}" if admin_logged_in? %>

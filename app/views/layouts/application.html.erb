@@ -15,6 +15,7 @@
 </head>
 <body>
 	<div id="wrapper">
+		<%- cache("page_header") do -%>
 		<div id="header_div">
 			<%- link_to root_path do -%>
 				<h1 id='main_header'>
@@ -30,13 +31,17 @@
 				</div>
 			</div>
 		</div>
+		<%- end -%>
 		<div id='navbar'>
 			<ul>
 				<li id='first_li'><%= link_to "home", root_url %></li>
 				<li><%= link_to "tips", tips_url %></li>
 				<li><%= link_to "write a tip", logged_in? ? new_tip_path : contribute_url %></li>
+				<%- if logged_in? -%>
+					<li><%= link_to "feedback", new_feedback_path %></li>
+				<%- end -%>
 				<li><%= link_to "about", about_url %></li>
-				<li><%= link_to "login", login_path %></li>
+				<li><%= logged_in? ? link_to("log out", logout_path) : link_to("log in", login_path) %></li>
 			</ul>
 			<div id='login'>
 			</div>
@@ -49,38 +54,19 @@
 				</div>
 			</div>
 			<div id='right_bar'>
-
-					<%= render :partial => 'layouts/search_form' %>
-
+				<%= render :partial => 'layouts/search_form' %>
 				<%= render :partial => 'ads/ad', :collection => @ads %>
 				<p class='align_center'>[<%= link_to("advertise here", advertise_path) %>]<p>
 				<hr />
-				<!-- start amazon widget -->
-				<div class='align_center'>
-					<script type="text/javascript"><!--
-						amazon_ad_tag = "thinksplayg-21"; 
-						amazon_ad_width = "160"; 
-						amazon_ad_height = "600"; 
-						amazon_ad_logo = "hide"; 
-						amazon_ad_link_target = "new"; 
-						amazon_ad_border = "hide"; 
-						amazon_color_text = "333333"; 
-						amazon_color_link = "0D5FEF"; 
-						amazon_color_logo = "FFFFFF"; 
-						amazon_ad_exclude = "php;c;trains;railway;train";
-						amazon_ad_include = "ruby+on+rails;ruby;mysql;behavior+driven+design";
-						amazon_ad_categories = "a"; //-->
-					</script>
-					<script type="text/javascript" src="http://www.assoc-amazon.co.uk/s/ads.js"></script>
-				</div>
-				<!-- end amazon widget -->
+				<%= render :partial => 'layouts/amazon' %>
 			</div>
 		</div>
 		<div id="push">
 		</div>
 	</div>
 	<div id="footer">
-		This is the foot
+		Site by <a href="http://gavinmorrice.com">Gavin Morrice</a> &copy; 2009<br />
+		<%= render :partial => 'layouts/cc' if @tip %>
 	</div>
 </body>
 </html>

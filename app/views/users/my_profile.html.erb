@@ -1,5 +1,6 @@
 <%- title "My Profile" -%>
 <%= render :partial => "user", :object => @current_user %>
+<%= content_tag :h4, "options:" %>
 <p class='clear_both'>
 	<%= link_to "edit profile", edit_user_path(@current_user) %><br />
 	<%= link_to "change password", change_password_path %><br />

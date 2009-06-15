@@ -1,18 +1,20 @@
-<%- title "About" -%>
-<h2>About this site</h2>
-<p class='easy_read'>
-	This is a site for ruby on rails developers to publish &amp; share their tips and ideas for working with ruby on rails.<br />
-	This is also an opportunity for you to showcase your gems and plugins and describe their features.<br />
-	By doing so, we can all benefit from each other's experience and learn from each other's feedback.
-</p> 
-<p class="easy_read">
-	All rails developers are welcome to <%= link_to "create an account", signup_path %> and start writing tips. If you'd like to offer feedback on how this site can be improved, you can send me a message on the <%= link_to "contact page", new_feedback_path %>.
-</p>
-<p class='easy_read'>
-	This site was built by Gavin Morrice with the help of the following:
-	<ul style='width: 85%; margin: 0 auto'>
-		<%- @externals_hash.each do |name, url| -%>
-			<li><%= link_to name, url, :rel => "external" %></li>
-		<%- end -%>
-	</ul>
-</p>
+<%- cache(:name => "about") do -%>
+	<%- title "About" -%>
+	<h2>About this site</h2>
+	<p class='easy_read'>
+		This is a site for ruby on rails developers to publish &amp; share their tips and ideas for working with ruby on rails.<br />
+		This is also an opportunity for you to showcase your own gems and plugins and describe their features.<br />
+		By doing so, we can all benefit from each other's experience and learn from each other's feedback.
+	</p> 
+	<p class="easy_read">
+		All rails developers are welcome to <%= link_to "create an account", signup_path %> and start writing tips. If you'd like to offer feedback on how this site can be improved, you can send me a message on the <%= link_to "contact page", new_feedback_path %>.
+	</p>
+	<p class='easy_read'>
+		This site was built by Gavin Morrice with the help of the following:
+		<ul style='width: 85%; margin: 0 auto'>
+			<%- @externals_hash.each do |name, url| -%>
+				<li><%= link_to name, url, :rel => "external" %></li>
+			<%- end -%>
+		</ul>
+	</p>
+<%- end -%>

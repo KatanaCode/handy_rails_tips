@@ -6,7 +6,7 @@
     <%= f.text_field :title %>
   </p>
   <p style='margin:1em 0;'>
-    <%= f.label :body, "Write your tip below (#{link_to('need help?', "/help#redcloth", :rel => "external")})" %><br />
+    <%= f.label :body, "Write your tip below (#{link_to('need help?', "/help#redcloth", :rel => "external")})" %>
     <%= f.text_area :body %>
   </p>
 	<div id='preview_options'>
@@ -18,4 +18,4 @@
 		<%= f.label :tag_list, "List of tags (separate with commas)" %>
 		<%= f.text_field :tag_list %>
   </p>
-
+	

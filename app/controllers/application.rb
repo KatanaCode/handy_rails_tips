@@ -1,19 +1,23 @@
 class ApplicationController < ActionController::Base
-  include SimpleCaptcha::ControllerHelpers
   
+  ID_ACCT_NO = "f6f857ecb1bf718d7c85b1170bf9bbf8"  
   
-  helper :all
+  helper :application, :layouts, :tips
   protect_from_forgery :secret => '1283952abc1ff9952ad252a245b35509'
   filter_parameter_logging :password
   before_filter :fetch_current_user
   before_filter :fetch_ads
   before_filter :new_subscriber
   before_filter :new_search
-
   
   helper_method :current_user, :logged_in?, :this_user_logged_in?, :admin_logged_in?, 
                   :flagged_message, :slogan, :add_to_favorites
   
+  
+  before_filter :log_user_agent
+  def log_user_agent
+    logger.info "[user_agent]#{request.user_agent}[/user_agent]"
+  end
 
   
   def logged_in?
