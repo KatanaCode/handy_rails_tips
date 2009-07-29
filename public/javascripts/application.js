@@ -1,4 +1,5 @@
 
+
 function externalLinks() {
 	if (!document.getElementsByTagName) return;
 	var anchors = document.getElementsByTagName("a");

@@ -4,7 +4,7 @@
 	</div>
 	<%- div_for tip do -%>
 		<%= content_tag :h3, link_to(tip.title, tip, :class =>"tip_title_link") %>
-		<%= partial_tip_body(tip.short_body) %>
+		<%= partial_tip_body(tip.short_body, tip) %>
 		<p class='float_right grey'><%= comments_count_link(tip, :url => tip_path(tip)) %></p>
 	<%- end -%>
 	<div class='clear_both'>

@@ -1,13 +1,12 @@
+<%- title "About" -%>
 <%- cache(:name => "about") do -%>
-	<%- title "About" -%>
 	<h2>About this site</h2>
 	<p class='easy_read'>
-		This is a site for ruby on rails developers to publish &amp; share their tips and ideas for working with ruby on rails.<br />
-		This is also an opportunity for you to showcase your own gems and plugins and describe their features.<br />
-		By doing so, we can all benefit from each other's experience and learn from each other's feedback.
+		Handy Rails Tips is a site for Ruby on Rails developers to write &amp; publish their tips and tutorials on Ruby on Rails. By doing so, we can all learn from each other's ideas and improve our own ideas with feedback from others.<br />
+		This is also a great opportunity for you to showcase a gem or plugin you've created and describe how it can be used.
 	</p> 
 	<p class="easy_read">
-		All rails developers are welcome to <%= link_to "create an account", signup_path %> and start writing tips. If you'd like to offer feedback on how this site can be improved, you can send me a message on the <%= link_to "contact page", new_feedback_path %>.
+		All Rails developers are welcome to <%= link_to "create an account", signup_path %> and start writing tips. If you'd like to offer feedback on how this site can be improved, you can send me a message on the <%= link_to "contact page", new_feedback_path %>.<br />
 	</p>
 	<p class='easy_read'>
 		This site was built by Gavin Morrice with the help of the following:

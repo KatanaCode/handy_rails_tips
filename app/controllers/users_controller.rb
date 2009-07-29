@@ -35,6 +35,7 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find params[:id]
+    this_user_login_required(@user)
     if params[:user][:old_password]
       if @user.password_matches? params[:user][:old_password]
         @user.password = params[:user][:password]

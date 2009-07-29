@@ -4,7 +4,7 @@ module ActiveRecord #:nodoc:
       def self.included(base)
         base.extend(ClassMethods)
       end
-      
+            
       module ClassMethods
         def acts_as_taggable
           has_many :taggings, :as => :taggable, :dependent => :destroy, :include => :tag

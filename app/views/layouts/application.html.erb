@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta name="author" content="Gavin Morrice">
+	<title><%= "#{yield(:title)} - #{slogan}" %></title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="author" content="Gavin Morrice" />
 	<meta name="rating" content="general" />
   <meta name="resource-type" content="document" />
-	<meta name="keywords" content="ruby on rails, tutorials, help, <%= @tip.tag_list if @tip %>" />
-	<title><%= "#{yield(:title)} - #{slogan}" %></title>
+	<meta name="keywords" content="rails, ruby on rails, tutorials, tips, help, <%= @tip.tag_list if @tip %>" />
 	<%= javascript_include_tag :all %>
 	<%= stylesheet_link_tag %W( reset generic application coderay ), :cache => true %>
 	<%= auto_discovery_link_tag :rss, "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" %>
@@ -17,16 +17,18 @@
 	<div id="wrapper">
 		<%- cache("page_header") do -%>
 		<div id="header_div">
-			<%- link_to root_path do -%>
-				<h1 id='main_header'>
+			<h1 id='main_header'>
+				<%- link_to root_path do -%>
 					<span class='hidden'>Handy Rails Tips: Ruby On Rails Tips &amp; Tutorials</span>
-				</h1>
-			<%- end -%>
+					<%= image_tag("logo.gif", :onmouseover => "this.src='/images/logo-hover.gif'", 
+						:onmouseout => "this.src='/images/logo.gif'") %>
+				<%- end -%>
+			</h1>
 			<div id='subscription_div'>
 				<%= subscriber_form "LatestTipsOnHandyrailstipscom", :submit_value => "" %>
 				<div id='rss_div'>
-					<%- link_to rss_path do -%>
-						<span class='hidden'>subscribe via RSS</span>
+					<%- link_to "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" do -%>
+						<%= image_tag("subscribe.png", :alt => "subscribe via RSS") %>
 					<%- end -%>
 				</div>
 			</div>
@@ -34,14 +36,15 @@
 		<%- end -%>
 		<div id='navbar'>
 			<ul>
-				<li id='first_li'><%= link_to "home", root_url %></li>
-				<li><%= link_to "tips", tips_url %></li>
-				<li><%= link_to "write a tip", logged_in? ? new_tip_path : contribute_url %></li>
-				<%- if logged_in? -%>
-					<li><%= link_to "feedback", new_feedback_path %></li>
-				<%- end -%>
-				<li><%= link_to "about", about_url %></li>
-				<li><%= logged_in? ? link_to("log out", logout_path) : link_to("log in", login_path) %></li>
+				<%= content_tag(:li, link_to("home", root_url, :title => "home"), :id => "first_li") %>
+				<%= content_tag(:li, link_to("tips", tips_url, :title => "tips")) %>
+				<%= content_tag(:li, link_to("write a tip", 
+					(logged_in? ? new_tip_path : contribute_url), :title => "write a tip")) %>
+				<%= content_tag(:li, link_to("about", about_url, :title => "about")) %>
+				<%= content_tag(:li, link_to("profile", my_profile_path)) if logged_in? %>
+				<%= content_tag(:li, link_to("admin", admin_path)) if admin_logged_in? %>
+				<%= content_tag(:li, 
+					(logged_in? ? link_to("log out", logout_path) : link_to("log in", login_path))) %>
 			</ul>
 			<div id='login'>
 			</div>
@@ -50,13 +53,13 @@
 			<div id="collapse">
 				<div id='yield'>
 					<%= render :partial => 'layouts/flash', :locals => {:flash => flash} %>
-					<%= yield %>
+					<%= yield %>					
 				</div>
 			</div>
 			<div id='right_bar'>
 				<%= render :partial => 'layouts/search_form' %>
 				<%= render :partial => 'ads/ad', :collection => @ads %>
-				<p class='align_center'>[<%= link_to("advertise here", advertise_path) %>]<p>
+				<p class='align_center'>[<%= link_to("advertise here", advertise_path) %>]</p>
 				<hr />
 				<%= render :partial => 'layouts/amazon' %>
 			</div>
@@ -65,8 +68,20 @@
 		</div>
 	</div>
 	<div id="footer">
-		Site by <a href="http://gavinmorrice.com">Gavin Morrice</a> &copy; 2009<br />
-		<%= render :partial => 'layouts/cc' if @tip %>
+		<p class='float_left'>Site by <a href="http://gavinmorrice.com">Gavin Morrice</a> &copy; 2009</p>
+		<p class='float_right'><%= render :partial => 'layouts/cc'%></p>
 	</div>
+	<!-- start google analytics -->
+	<!-- <script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		try {
+		var pageTracker = _gat._getTracker("UA-9249462-1");
+		pageTracker._trackPageview();
+		} catch(err) {}
+	</script> -->
+	<!-- end google analytics -->
 </body>
 </html>

@@ -22,8 +22,8 @@ module TipsHelper
     body
   end
   
-  def partial_tip_body(body)
-    body = wrap_in_braces(body)
+  def partial_tip_body(body, tip)
+    body = wrap_in_braces(body + "\" ...read »\":#{tip_url(tip)}")
     xml_to_braces(body)
     strip_html_and_convert_to_redcloth(body)
     remove_braces(body)

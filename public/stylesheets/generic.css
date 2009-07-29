@@ -4,13 +4,14 @@
 .smaller{font-size: smaller}
 .larger{font-size: larger}
 .current, .underline{text-decoration: underline}
-.uppercase{text-decoration: uppercase}
+.uppercase{text-transform: uppercase}
 .lowercase{text-transform: lowercase}
 .easy_read{
 	line-height: 1.8em;
 	color: #333;
 	word-spacing: 0.2em;
 	letter-spacing: 0.05em;
+	margin: 1em;
 }
 .disabled, .hidden{display:none}
 .silver_top{

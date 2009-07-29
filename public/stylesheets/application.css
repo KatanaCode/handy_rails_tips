@@ -10,9 +10,8 @@ html {
 }
 body {
 	height: 100%;
-	width: 100%;
 	color: #222;
-	background: #F6F9F9;
+	background-color: #F6F9F9;
 }
 a{
 	border: none;
@@ -26,12 +25,15 @@ a:hover,a:active,a:focus{
 }
 /*F4F5F5*/
 div#wrapper{
+	width: 100%;
 	min-height: 100%;
 	height: auto !important;
 	margin: 0 auto -4em;
 }
 div#header_div{
 	height: 80px;
+	min-width: 960px;
+	width: auto !important;
 	width: 100%;
 	background: #780101 url(/images/black-red.gif) 0 0 repeat-x;
 	border-top: 0.3em solid #333;
@@ -41,25 +43,30 @@ h1#main_header{
 	margin-left: 2em;
 	height: 100%;
 	width: 460px;
-	background: transparent url(/images/logo2.gif) 0 0 no-repeat;
+	background-color: transparent;
 	float: left;
 }
 h1#main_header:hover{
-	background: transparent url(/images/logo.gif) 0 0 no-repeat;
+	background-color: transparent;
 }
 h2{
 	font-size: 1.4em;
 	font-weight: bold;
 	color: inherit;
 }
+h3{
+	font-weight: bold;
+}
 div#subscription_div{
 	background: transparent;
 	float: right;
 	margin: 0.5em 4em auto auto;
+	width: 14em;
+	
 }
 
 form#subscribe_form{
-	width: auto;
+	width: 13.5em;
 	margin: 0.5em 0;
 	height: auto;
 	background: #FFFFFF;
@@ -69,13 +76,13 @@ form#subscribe_form{
 	border-left: 0.2em solid #331111;
 }
 
-#subscribe_form input[type="text"], #subscribe_form input[type="text"]:focus{
+#subscriber_email, #subscriber_email:focus{
 	color: #777;
 	font-size: 1em;
 	width: 10em;
 	height: 18px;
 	padding: 2px;
-	border:none;
+	border-width: 0;
 }
 #submit_subscriber{
 	background: #FFFFFF url(/images/mail.gif) 50% 1px no-repeat;
@@ -88,26 +95,22 @@ form#subscribe_form{
 div#rss_div{
 	width: 100%;
 	margin: auto;
-	background: transparent url(/images/subscribe.png) 100% 0 no-repeat;
-	height: 20px;
-	cursor: pointer;
+	background-color: transparent;
+	height: auto;
 }
-#rss_div a{
-	color: #FFFFFF;
-	font-size: 1em;
-	margin: auto 0.5em;
-}
-#rss_div:hover{
-	border-bottom: thin solid #FFFFFF;
-}
+#rss_div:hover{border-bottom: thin dotted #DDD}
 div#navbar{
 	height: auto;
+	min-width: 960px;
+	width: auto !important;
+	width: 100%;	
 	padding: 0.4em 0;
 	background: #333;
 	border-bottom: 0.2em solid #DDDDDD;
 	overflow: auto;
 }
 #navbar ul{
+	width: auto;
 	float: right;
 	margin-right: 2em;
 }
@@ -131,8 +134,8 @@ div#navbar{
 	color: #DDDDDD;
 }
 div#content{
-	height: auto;
-	min-width: 960px !important;
+	min-width: 960px;
+	width: auto !important;
 	width: 100%;
 	background: #F6F9F9 url(/images/grad.png) repeat-x scroll left top;
 	border-bottom: thin solid #111111;
@@ -153,7 +156,7 @@ div#yield{
 
 div#right_bar{
 	background: inherit;
-	float: right;
+	float: left;
 	text-align: center;
 	width: 20%;
 }
@@ -165,20 +168,28 @@ div#push{
 	clear:both;
 }
 div#footer{
-	text-align: left;
-	height: 2em;
+	min-width: 960px;
+	width: auto !important;
+	width: 100%;
+	height: 4em;
 	background: #444;
 	border-top: 0.3em solid #353535;
 	color: #DDDDDD;
-	padding: 2em;
+	border-bottom: thin solid #444; /* prevent margins from collapsing */
+	
 }
-
+#footer p{
+	margin: 1em 4em;
+	display: inline-block;
+}
 
 /*partials */
 div.gravatar_image{
 	margin: 0 0.2em 0 0;
 	float: left;
 	border: thin solid silver;
+	width: 100px;
+	height: 100px;
 }
 
 div.ad{margin: 1.4em 0;clear: both}
@@ -224,16 +235,22 @@ div.tip{
 	float:right;
 	width: 90%;
 }
-
+#tip_body_div ul{
+	list-style: disc;
+}
+#tip_body_div ul li{
+	margin: 1em;
+}
 div.tip p{
 	line-height: 1.6em;
-	word-spacing: 1em;
+	word-spacing: 0.5em;
 	letter-spacing: 0.01em;
 }
-
-
-
-
+.user_about{
+	background: #333;
+	color: #ddd;
+	padding: 0.4em;
+}
 /*start forms*/
 label{
 	text-transform: lowercase;
@@ -241,6 +258,9 @@ label{
 fieldset{
 	border-bottom: thin solid #ccc;
 	width: 100%;
+}
+legend{
+	color: #444;
 }
 p.submit{
 	margin: 1em auto;
@@ -257,7 +277,7 @@ form[action="/forgot_password/send_email"] p{
 	margin: 1em 0;
 }
 form#login_form{
-	width: 25em;
+	width: 28em;
 	margin: 4em auto 0;
 }
 form#new_tip, form.edit_tip{
@@ -342,7 +362,8 @@ form#login_form label{
 }
 #cse-search-box input[type="text"]{
 	margin: 3em auto 0;
-	width: 14em;
+	width: 12em;
+	height: 18px;
 }
 /*end forms*/
 
@@ -355,8 +376,8 @@ div.flash, .errorExplanation {
 	font-size: 0.9em;
 	width: 70%;
 }
-div#error, .errorExplanation{background :#FFF3D2;border: thin solid #F5AD00}
-div#warning{background: #fcb;border: thin solid #f99}
-div#notice{background: #efc;border: thin solid #6CB83A}
+div.error, .errorExplanation{background :#FFF3D2;border: thin solid #F5AD00}
+div.warning{background: #fcb;border: thin solid #f99}
+div.notice{background: #efc;border: thin solid #6CB83A}
 
 .field_with_errors{background: #fcb}

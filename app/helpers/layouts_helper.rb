@@ -9,9 +9,9 @@ module LayoutsHelper
         p do
           input :type => "text", :name => "email", :value => "subscribe via email", :onclick => "this.value='';this.style.color='#333333';", :id => options[:field_id]
           input :type => "submit", :value => options[:submit_value], :id => options[:submit_id]
+          input :type => "hidden", :value => feed_name, :name => "uri"
+          input :type => "hidden", :value => "en_US", :name => "loc"
         end
-        input :type => "hidden", :value => feed_name, :name => "uri"
-        input :type => "hidden", :value => "en_US", :name => "loc"
       end
     end
   end

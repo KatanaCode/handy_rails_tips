@@ -1,17 +1,25 @@
 <%- title "#{h @tip.title}" -%>
 	<h2><%= link_to @tip.title, nil, :class => "tip_title_link" %></h2>
-	<p class=''>tip # <%= @tip.id %> by <%= link_to @user.username, @user %></p>
 	<div id='tip_body_div'>
 		<%- cache(:controller => "tips", :action => "show", :id => @tip.id) do -%>	
 	  	<%= tip_body(@tip.body) %>
 		<%- end -%>
 	</div>
-	<p style='background: #333;color: #ddd;padding: 0.4em' class='smaller'>
-		posted on <%= @tip.created_at.to_formatted_s(:main) %>
-		<%= " - last updated on #{@tip.updated_at.to_formatted_s(:main)}" if @tip.has_changed? %>
+	<p class='align_right'>
 		<script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=d8ddea73-a9e8-4458-9f42-274e75282826&amp;type=website&amp;headerfg=%23f8f8f8&amp;headerbg=%23068ac7&amp;headerTitle=Send%20this%20tip%20via...">
 		</script>
 	</p>
+	<div class='smaller user_about'>
+		<div class='float_left' style='margin-right: 0.2em'>
+			<%= gravatar_image(@user.email, @user.username, :size => 40) %>
+		</div>
+		<p>
+			posted on <%= @tip.created_at.to_formatted_s(:main) %>
+			<%= " - last updated on #{@tip.updated_at.to_formatted_s(:main)}" if @tip.has_changed? %>
+			by <%= @user.url ? link_to(@user.username, @user.url) : @user.username %><br />
+			<%= @user.about %>
+		</p>
+	</div>
 	<p class='float_right'>
 		<%-  if this_user_logged_in?(@user) -%>
 			  <%= link_to "edit tip", edit_tip_path(@tip) %> |

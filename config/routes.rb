@@ -24,7 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   map.backup_log   "backup_log",  :controller => "admin", :action => "backup_log"
 
   map.with_options :controller => "feeds" do |feeds|
-    feeds.sitemap     "sitemap",         :action => "sitemap", :format => :xml
+    feeds.sitemap     "sitemap.xml",         :action => "sitemap", :format => :xml
     feeds.rss             "rss",         :action => "latest_tips", :format => :rss
     feeds.comments_feed "comments_feed", :action => "comments", :format => :rss
   end
@@ -48,6 +48,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :users, :collection => {:my_profile => :get}
   
+  map.connect "robots.txt", :controller => "robots"
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

@@ -51,7 +51,8 @@ class Notifier < ActionMailer::Base
   
   def newsletter(newsletter, sent_at = Time.now)
     subject    'Handy Rails Tips Newsletter'
-    recipients newsletter.recipients
+    bcc newsletter.recipients
+    recipients SITE_EMAIL
     from       SITE_EMAIL
     sent_on    sent_at
     body       :newsletter => newsletter

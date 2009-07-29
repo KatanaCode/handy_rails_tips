@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
   
+  turn_off_sessions_for_robots
+  
+  #session_enabled?
+  
   ID_ACCT_NO = "f6f857ecb1bf718d7c85b1170bf9bbf8"  
   
   helper :application, :layouts, :tips
@@ -7,18 +11,11 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
   before_filter :fetch_current_user
   before_filter :fetch_ads
-  before_filter :new_subscriber
-  before_filter :new_search
+  #before_filter :new_subscriber using feedburner now
+  #before_filter :new_search using google CSE now
   
   helper_method :current_user, :logged_in?, :this_user_logged_in?, :admin_logged_in?, 
                   :flagged_message, :slogan, :add_to_favorites
-  
-  
-  before_filter :log_user_agent
-  def log_user_agent
-    logger.info "[user_agent]#{request.user_agent}[/user_agent]"
-  end
-
   
   def logged_in?
     !@current_user.nil?
@@ -83,20 +80,23 @@ class ApplicationController < ActionController::Base
    end
   
   protected
+
+  # not used
+  # def new_search
+  #   @search = Search.new
+  # end
   
-  def new_search
-    @search = Search.new
-  end
-  
-  def new_subscriber
-    @subscriber = Subscriber.new
-  end
+  # not used
+  # def new_subscriber
+  #   @subscriber = Subscriber.new
+  # end
   
   def fetch_ads
     @ads = Ad.find :all, :order => "rand()"
   end
   
   def fetch_current_user
+    
     if session[:user_id]
       @current_user ||= User.find(session[:user_id])
     end

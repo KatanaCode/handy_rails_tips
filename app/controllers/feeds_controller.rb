@@ -1,4 +1,5 @@
 class FeedsController < ApplicationController
+  session :off
   def sitemap
     @tips = Tip.for_public.all :order => "updated_at DESC"
   end
