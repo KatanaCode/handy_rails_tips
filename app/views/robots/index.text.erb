@@ -1,0 +1,10 @@
+<% robots_dot_text do |rules| %>
+  <%= rules.comment "comment" %>
+  <%= rules.br %>
+  <%= rules.add :all, flag_tip_path("*"), my_profile_path, admin_path, notice_path %>
+  <%= rules.allow user_path("*") %>
+  <%= rules.block users_path %>
+  <%= rules.br %>
+	<%= rules.comment "Sitemap" %>
+  <%= rules.sitemap sitemap_url %>
+<% end %>

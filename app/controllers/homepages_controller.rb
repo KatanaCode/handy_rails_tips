@@ -2,7 +2,7 @@ class HomepagesController < ApplicationController
   
   
   def index
-    @tips = Tip.for_public.all :limit => 5
+    @tips = Tip.for_public.all# :limit => 5
   end
   
   def about

@@ -12,6 +12,7 @@
 	<%= javascript_include_tag :all %>
 	<%= stylesheet_link_tag %W( reset generic application coderay ), :cache => true %>
 	<%= auto_discovery_link_tag :rss, "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" %>
+	<%= yield(:head) %>
 </head>
 <body>
 	<div id="wrapper">

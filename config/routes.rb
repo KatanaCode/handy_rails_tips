@@ -49,6 +49,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :collection => {:my_profile => :get}
   
   map.connect "robots.txt", :controller => "robots"
+  
+  map.connect "javascripts/update_tip.js", :controller => "javascripts", :action => "update_tip", :format => "js"
+  
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

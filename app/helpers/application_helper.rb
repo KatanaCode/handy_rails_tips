@@ -5,7 +5,12 @@ module ApplicationHelper
     content_for :title do
       title
     end
-
+  end
+  
+  def javascript *content
+    content_for :head do
+      javascript_include_tag content
+    end
   end
   
   def gravatar_image(email, name, options)

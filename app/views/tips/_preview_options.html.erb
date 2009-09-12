@@ -3,5 +3,5 @@
 					:url => { :controller => "tips", :action => "change_ajax_opts" }) %>
 
 </p>
-<%= observe_field :tip_body, :frequency => 2, :url => {:action => "preview"}, 
+<%# observe_field :tip_body, :frequency => 2, :url => {:action => "preview"}, 
 									:with => "q" if current_user.use_ajax %>
