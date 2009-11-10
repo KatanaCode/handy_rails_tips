@@ -1,6 +1,3 @@
-require 'RMagick'
-include Magick
-
 class Ad < ActiveRecord::Base  
   include UrlSorter
   
@@ -18,7 +15,6 @@ class Ad < ActiveRecord::Base
   validates_presence_of :image, :on => :create
   
   validates_presence_of :url
-  
 
 
   def image=(image)

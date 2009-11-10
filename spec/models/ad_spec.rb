@@ -1,6 +1,4 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-require 'RMagick'
-include Magick
 
 describe Ad do
   before(:each) do

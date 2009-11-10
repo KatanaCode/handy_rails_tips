@@ -1,7 +1,5 @@
-# require 'Digest'
-require "#{Rails.root}/lib/validations"
-class User < ActiveRecord::Base
-  include UrlSorter
+class User < ActiveRecord::Base  
+  
   
   before_create :set_login_times
   before_create :set_token

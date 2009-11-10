@@ -1,26 +1,19 @@
-development:
+defaults: &defaults
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: tips_development
   pool: 5
   username: root
-  password:
-  socket: /tmp/mysql.sock
+  password: jhb01
 
-
+development:
+  database: handy_rails_tips_development
+  <<: *defaults
+  
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
-  pool: 5
-  timeout: 5000
+  database: handy_rails_tips_test
+  <<: *defaults
   
 production:
-  adapter: mysql
-  encoding: utf8
-  reconnect: false
-  database: thinkers_tipsproduction
-  pool: 5
-  username: thinkers_root
-  password: guapaa11bounce
-  socket: /tmp/mysql.sock
+  database: handy_rails_tips_production
+  <<: *defaults

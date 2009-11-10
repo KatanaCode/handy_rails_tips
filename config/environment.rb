@@ -4,20 +4,19 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
 
   config.load_paths += %W( #{RAILS_ROOT}/app/observers )
-  config.gem "rmagick", :lib => false, :version => '>=2.9.1'
-  config.gem 'will_paginate', :version => '~>2.2.2', :lib => 'will_paginate', :source => 'http://gems.github.com'
-  config.gem "RedCloth", :version => ">=4.1.9", :lib => false, :source => "http://code.whytheluckystiff.net/redcloth/"
-  config.gem "coderay", :version => ">=0.8.312", :lib => false, :source => 'http://gems.github.com'
-  config.gem "rspec-rails", :lib => false, :version => '>=1.2.2'
-  config.gem "rspec", :lib => false, :version => '>=1.2.2'
-  config.gem "webrat", :lib => false, :version => '>=0.4.3'
-  config.gem "ZenTest", :lib => false, :version => '>=4.0.0'
-  config.gem "redgreen", :lib => false, :version => ">=1.2.2"
-  config.gem "cucumber", :lib => false, :version => '>=0.2.3'
-  config.gem "mocha", :lib => false, :version => '>=0.9.5'
-  config.gem "thoughtbot-factory_girl", :lib => "factory_girl", :source => "http://gems.github.com"
-  config.gem "markaby", :version => ">=0.5"
-  config.gem "less", :version => ">=0.8.9"
+  config.gem 'will_paginate', :lib => 'will_paginate',  :version => '>=2.2.2'
+  config.gem "RedCloth",      :lib => false,            :version => ">=4.1.9"
+  config.gem "coderay",       :lib => false,            :version => ">=0.8.312"
+  config.gem "rspec-rails",   :lib => false,            :version => '>=1.2.2'
+  config.gem "rspec",         :lib => false,            :version => '>=1.2.2'
+  config.gem "webrat",        :lib => false,            :version => '>=0.4.3'
+  config.gem "ZenTest",       :lib => false,            :version => '>=4.0.0'
+  config.gem "redgreen",      :lib => false,            :version => ">=1.2.2"
+  config.gem "cucumber",      :lib => false,            :version => '>=0.2.3'
+  config.gem "mocha",         :lib => false,            :version => '>=0.9.5'
+  config.gem "factory_girl",                            :version => ">=1.2.3"
+  config.gem "markaby",                                 :version => ">=0.5"
+  config.gem "less",                                    :version => ">=0.8.9"
   
   config.plugins = [ :all ]
   
@@ -47,4 +46,3 @@ Rails::Initializer.run do |config|
   config.action_view.field_error_proc = lambda {|html_tag, instance_tag| "<span class='field_with_errors'>#{html_tag}</span>"}
 
 end
-require "will_paginate"
