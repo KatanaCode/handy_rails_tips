@@ -13,8 +13,8 @@ ActiveRecord::Schema.define(:version => 20090612113958) do
 
   create_table "ads", :force => true do |t|
     t.string   "url"
-    t.string   "company",    :limit => 50, :default => "", :null => false
-    t.integer  "position",   :limit => 2,                  :null => false
+    t.string   "company",    :limit => 50, :null => false
+    t.integer  "position",   :limit => 2,  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(:version => 20090612113958) do
   create_table "comments", :force => true do |t|
     t.text     "body",                                     :null => false
     t.string   "url",                      :default => "", :null => false
-    t.string   "email",      :limit => 50, :default => "", :null => false
-    t.string   "name",       :limit => 20, :default => "", :null => false
+    t.string   "email",      :limit => 50,                 :null => false
+    t.string   "name",       :limit => 20,                 :null => false
     t.integer  "tip_id",                                   :null => false
     t.integer  "state",      :limit => 1,  :default => 1
     t.datetime "created_at"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20090612113958) do
   end
 
   create_table "searches", :force => true do |t|
-    t.string   "criterion",  :limit => 20, :default => "",    :null => false
+    t.string   "criterion",  :limit => 20,                    :null => false
     t.integer  "frequency",                :default => 1,     :null => false
     t.boolean  "success",                  :default => false, :null => false
     t.datetime "created_at"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20090612113958) do
   add_index "searches", ["frequency"], :name => "index_searches_on_frequency"
 
   create_table "sessions", :force => true do |t|
-    t.string   "session_id", :default => "", :null => false
+    t.string   "session_id", :null => false
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(:version => 20090612113958) do
   end
 
   create_table "subscribers", :force => true do |t|
-    t.string   "email",      :default => "", :null => false
+    t.string   "email",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -106,10 +106,10 @@ ActiveRecord::Schema.define(:version => 20090612113958) do
   end
 
   create_table "tips", :force => true do |t|
-    t.string   "title",      :limit => 120, :default => "", :null => false
-    t.binary   "body",                                      :null => false
-    t.integer  "user_id",                                   :null => false
-    t.integer  "state",      :limit => 1,   :default => 1,  :null => false
+    t.string   "title",      :limit => 120,                :null => false
+    t.binary   "body",                                     :null => false
+    t.integer  "user_id",                                  :null => false
+    t.integer  "state",      :limit => 1,   :default => 1, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -117,9 +117,9 @@ ActiveRecord::Schema.define(:version => 20090612113958) do
   add_index "tips", ["user_id"], :name => "index_tips_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                 :limit => 50, :default => "",   :null => false
-    t.string   "username",              :limit => 15, :default => "",   :null => false
-    t.string   "hashed_password",       :limit => 64, :default => "",   :null => false
+    t.string   "email",                 :limit => 50,                   :null => false
+    t.string   "username",              :limit => 15,                   :null => false
+    t.string   "hashed_password",       :limit => 64,                   :null => false
     t.string   "url",                                 :default => "",   :null => false
     t.boolean  "show_email",                          :default => true, :null => false
     t.boolean  "subscribed",                          :default => true, :null => false
@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(:version => 20090612113958) do
     t.boolean  "use_ajax",                            :default => true, :null => false
     t.text     "about"
     t.string   "token",                 :limit => 16, :default => "",   :null => false
-    t.string   "salt",                  :limit => 8,  :default => "",   :null => false
+    t.string   "salt",                  :limit => 8,                    :null => false
     t.datetime "this_login",                                            :null => false
     t.datetime "last_login",                                            :null => false
     t.integer  "role",                  :limit => 1,  :default => 2,    :null => false

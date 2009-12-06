@@ -52,16 +52,16 @@
 		<div id="content">
 			<div id="collapse">
 				<div id='yield'>
-					<%= render :partial => 'layouts/flash', :locals => {:flash => flash} %>
+					<%= render 'layouts/flash' unless flash.empty? %>
 					<%= yield %>					
 				</div>
 			</div>
 			<div id='right_bar'>
-				<%= render :partial => 'layouts/search_form' %>
-				<%= render :partial => 'ads/ad', :collection => @ads %>
+				<%= render  'layouts/search_form' %>
+				<%= render @ads %>
 				<p class='align_center'>[<%= link_to("advertise here", advertise_path) %>]</p>
 				<hr />
-				<%= render :partial => 'layouts/amazon' %>
+				<%= render  'layouts/amazon' %>
 			</div>
 		</div>
 		<div id="push">
@@ -69,10 +69,10 @@
 	</div>
 	<div id="footer">
 		<p class='float_left'>Site by <a href="http://gavinmorrice.com">Gavin Morrice</a> &copy; 2009</p>
-		<p class='float_right'><%= render :partial => 'layouts/cc'%></p>
+		<p class='float_right'><%= render 'layouts/cc'%></p>
 	</div>
 	
-  <%= render 'google_analytics' if RAILS_ENV == "production" %>
+  <%= render 'layouts/google_analytics' if RAILS_ENV == "production" %>
 
 	
 </body>

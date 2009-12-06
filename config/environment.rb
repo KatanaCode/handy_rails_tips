@@ -9,9 +9,7 @@ Rails::Initializer.run do |config|
   config.gem "coderay",       :lib => false,            :version => ">=0.8.312"
   config.gem "markaby",                                 :version => ">=0.5"
   config.gem "less",                                    :version => ">=0.8.9"
-  
-  config.plugins = [ :all ]
-  
+    
   Dir.chdir("#{Rails.root}/app/observers") do
     config.active_record.observers = Dir.glob("*_observer.rb").collect {|ob_name| ob_name.split(".").first}
   end
