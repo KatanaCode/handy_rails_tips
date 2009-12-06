@@ -39,8 +39,7 @@
 			<ul>
 				<%= content_tag(:li, link_to("home", root_url, :title => "home"), :id => "first_li") %>
 				<%= content_tag(:li, link_to("tips", tips_url, :title => "tips")) %>
-				<%= content_tag(:li, link_to("write a tip", 
-					(logged_in? ? new_tip_path : contribute_url), :title => "write a tip")) %>
+				<%= content_tag(:li, link_to("write a tip", new_tip_path, :title => "write a tip")) if logged_in? %>
 				<%= content_tag(:li, link_to("about", about_url, :title => "about")) %>
 				<%= content_tag(:li, link_to("profile", my_profile_path)) if logged_in? %>
 				<%= content_tag(:li, link_to("admin", admin_path)) if admin_logged_in? %>
@@ -72,17 +71,9 @@
 		<p class='float_left'>Site by <a href="http://gavinmorrice.com">Gavin Morrice</a> &copy; 2009</p>
 		<p class='float_right'><%= render :partial => 'layouts/cc'%></p>
 	</div>
-	<!-- start google analytics -->
-	<!-- <script type="text/javascript">
-		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-	</script>
-	<script type="text/javascript">
-		try {
-		var pageTracker = _gat._getTracker("UA-9249462-1");
-		pageTracker._trackPageview();
-		} catch(err) {}
-	</script> -->
-	<!-- end google analytics -->
+	
+  <%= render 'google_analytics' if RAILS_ENV == "production" %>
+
+	
 </body>
 </html>

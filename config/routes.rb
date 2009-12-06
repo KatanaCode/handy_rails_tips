@@ -5,14 +5,12 @@ ActionController::Routing::Routes.draw do |map|
   map.root                      :controller => "homepages"
   map.admin       "admin",      :controller => "admin"
   map.my_profile  "my_profile", :controller => "users",     :action => "my_profile"
-  map.signup      "signup",     :controller => 'users',     :action => "new"
   map.login       "login",      :controller => "sessions",  :action => "new"
   map.logout      "logout",     :controller => "sessions",  :action => "destroy"
   map.notice      "notice",     :controller => "homepages", :action => "notice"
   map.search      "search",     :controller => "searches",  :action => "show"
 
   map.with_options :controller => "homepages" do |home|
-    home.contribute "contribute",   :action => "contribute"
     home.about       "about",       :action => "about"
     home.terms     "terms_of_use",  :action => "terms"
     home.advertise   "advertise",   :action => "advertise"  

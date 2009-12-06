@@ -12,7 +12,6 @@ class HomepagesController < ApplicationController
                         "Rspec"         => "http://rspec.info/",
                         "WebRat"        => "https://webrat.lighthouseapp.com/dashboard",
                         "Cucumber"      => "http://cukes.info/",
-                        "ZenTest"       => "http://www.zenspider.com/ZSS/Products/ZenTest/",
                         "Coffee"        => "http://en.wikipedia.org/wiki/Coffee"}
     end
   end

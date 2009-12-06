@@ -1,0 +1,1 @@
+User.create! :login => "gavinM", "password" => 'password', :password_confirmation => "password", :email => "dr_gavin@hotmail.com"
