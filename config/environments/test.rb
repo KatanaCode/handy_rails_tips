@@ -1,7 +1,4 @@
-ENV['RSPEC'] = "true"
-ENV['AUTOFEATURE'] = "true"
-
- # Settings specified here will take precedence over those in config/environment.rb
+# Settings specified here will take precedence over those in config/environment.rb
 
 # The test environment is used exclusively to run your application's
 # test suite.  You never need to work with it otherwise.  Remember that
@@ -28,3 +25,12 @@ config.action_mailer.delivery_method = :test
 # This is necessary if your schema can't be completely dumped by the schema dumper,
 # like if you have constraints or database-specific column types
 # config.active_record.schema_format = :sql
+
+config.gem "rspec-rails",   :lib => false,            :version => '>=1.2.2'
+config.gem "rspec",         :lib => false,            :version => '>=1.2.2'
+config.gem "webrat",        :lib => false,            :version => '>=0.4.3'
+config.gem "ZenTest",       :lib => false,            :version => '>=4.0.0'
+config.gem "redgreen",      :lib => false,            :version => ">=1.2.2"
+config.gem "cucumber",      :lib => false,            :version => '>=0.2.3'
+config.gem "mocha",         :lib => false,            :version => '>=0.9.5'
+config.gem "factory_girl",                            :version => ">=1.2.3"
