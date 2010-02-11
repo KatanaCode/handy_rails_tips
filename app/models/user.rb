@@ -180,7 +180,7 @@ class User < ActiveRecord::Base
   end
   
   def make_token
-    SecureRandom.hex(8)
+    ActiveSupport::SecureRandom.hex(8)
   end
   
   def create_salt
