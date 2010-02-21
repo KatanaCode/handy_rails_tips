@@ -1,6 +1,7 @@
 set :application, "handy_rails_tips"
 set :deploy_to, "/root/public_html/handy_rails_tips/"
 set :domain,  "handyrailstips.com"
+
  
 role :app, "204.232.194.123"
 role :web, "204.232.194.123"
