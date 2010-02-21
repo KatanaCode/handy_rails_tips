@@ -8,9 +8,6 @@ class User < ActiveRecord::Base
   before_validation {|u| u.username.downcase! }
   
   before_save :hash_password  
-    
-  
-
   before_save :downcase_email
     
   has_many :favorites, :dependent => :destroy
@@ -77,6 +74,20 @@ class User < ActiveRecord::Base
   attr_accessor :updating_password
   attr_accessor :old_password
 
+  def self.find_from_params( params )
+    user = 
+    case params[:username]
+    when EMAIL_FORMAT then
+      find_by_email params[:username]
+    when /[\w]+/ then
+      find_by_username params[:username]
+    else
+      nil
+    end
+    return user if user and user.password_matches? params[:password]
+    nil
+  end
+
   def has_twitter?
     twitter_username && twitter_username.length > 0
   end
@@ -114,15 +125,19 @@ class User < ActiveRecord::Base
     update_attribute :notify_me, true
   end
   
+  def encrypt( value )
+    Digest::SHA2.hexdigest( value )
+  end
+  
   def hash_password
-    create_salt if salt.nil?
+    create_salt unless salt
     if new_record? || updating_password == true 
-      self.hashed_password = Digest::SHA2.hexdigest("#{salt}#{password.downcase}")
+      self.hashed_password = encrypt("#{salt}#{password.downcase}")
     end
   end
   
   def password_matches? password_to_match
-     hashed_password == Digest::SHA2.hexdigest("#{salt}#{password_to_match.downcase}")
+     hashed_password == encrypt("#{salt}#{password_to_match.downcase}")
   end
   
   def admin?
