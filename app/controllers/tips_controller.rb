@@ -6,7 +6,17 @@ class TipsController < ApplicationController
     if current_user && current_user.admin?
       @tips = Tip.paginate :all, :per_page => 10, :page => params[:page] || 1, :order => "created_at DESC"
     else
-      @tips  = Tip.for_public.paginate :all, :per_page => 10, :page => params[:page] || 1
+      respond_to do |format|
+        format.html {
+          @tips  = Tip.for_public.paginate :all, :per_page => 10, :page => params[:page] || 1
+        }
+        format.xml{
+          @tips  = Tip.for_public.all :select => "id, title", :limit => 10
+          render :xml => @tips
+        }
+      end
+      
+
     end
   end
   
