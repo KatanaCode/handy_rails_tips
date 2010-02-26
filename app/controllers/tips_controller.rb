@@ -3,20 +3,22 @@ class TipsController < ApplicationController
   skip_before_filter :fetch_ads, :only => [:change_ajax_opts, :preview]
   
   def index
-    if current_user && current_user.admin?
-      @tips = Tip.paginate :all, :per_page => 10, :page => params[:page] || 1, :order => "created_at DESC"
-    else
-      respond_to do |format|
-        format.html {
-          @tips  = Tip.for_public.paginate :all, :per_page => 10, :page => params[:page] || 1
-        }
-        format.xml{
-          @tips  = Tip.for_public.all :select => "id, title", :limit => 10
-          render :xml => @tips
-        }
-      end
+    respond_to do |format|
       
-
+      format.html {
+        @tips = 
+        if current_user and current_user.admin?
+          Tip
+        else
+          Tip.for_public
+        end.paginate :all, :per_page => 10, :page => params[:page] || 1
+      }
+      
+      format.xml{
+        @tips = Tip.for_public.all :select => "id, title", :limit => 5
+        render :xml => @tips
+      }
+      
     end
   end
   

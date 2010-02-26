@@ -18,6 +18,8 @@ class Tip < ActiveRecord::Base
 
   named_scope :for_public, :conditions => ["state = ? OR state = ?", STATES[:unflagged], STATES[:allowed]], :order => "created_at DESC"
 
+  default_scope :order => "created_at DESC"
+
   def to_param
     "#{id}-#{title.parameterize}"
   end
