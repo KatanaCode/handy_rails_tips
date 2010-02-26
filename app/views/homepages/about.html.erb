@@ -6,11 +6,4 @@
     
     Feel free to leave a comment or get in touch - gavin {at} thinkersplayground {dot} com
 	</p>
-	<p class='easy_read'>
-		<ul style='width: 85%; margin: 0 auto'>
-			<%- @externals_hash.each do |name, url| -%>
-				<li><%= link_to name, url, :rel => "external" %></li>
-			<%- end -%>
-		</ul>
-	</p>
 <%- end -%>
