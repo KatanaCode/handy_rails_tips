@@ -15,7 +15,7 @@ class TipsController < ApplicationController
       }
       
       format.xml{
-        @tips = Tip.for_public.all :select => "id, title", :limit => 5
+        @tips = Tip.for_public.all :select => "id, title"
         render :xml => @tips
       }
       
