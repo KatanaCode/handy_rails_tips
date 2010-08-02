@@ -1,8 +1,9 @@
-module ActiveRecord
-  module Validations
-    module ClassMethods
-      
-      def validates_permitted(attribute, options = { :message => "is not permitted"})
+module ValidatesPermitted
+
+  def self.included(base)
+    base.class_eval do
+
+      def self.validates_permitted(attribute, options = { :message => "is not permitted"})
         options.to_options!
         options.assert_valid_keys(:message, :in)
         raise ":in must be specified" if options[:in].nil?
@@ -13,6 +14,9 @@ module ActiveRecord
         end
       end
       
+      
     end
   end
-end
+
+  
+end      

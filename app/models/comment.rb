@@ -1,5 +1,5 @@
 require "#{Rails.root}/config/initializers/modules.rb"
-require "#{Rails.root}/lib/validations"
+require "#{Rails.root}/lib/validates_permitted"
 class Comment < ActiveRecord::Base  
   include UrlSorter
 
