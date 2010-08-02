@@ -3,6 +3,19 @@ require "#{Rails.root}/lib/validates_permitted"
 class Comment < ActiveRecord::Base  
   include UrlSorter
 
+  # TODO - fix me
+  def self.validates_permitted(attribute, options = { :message => "is not permitted"})
+    options.to_options!
+    options.assert_valid_keys(:message, :in)
+    raise ":in must be specified" if options[:in].nil?
+    validate do |obj|
+      options[:in].each do |reserved|
+        obj.errors.add(attribute, options[:message]) if obj.send(attribute) == reserved
+      end
+    end
+  end
+
+
   attr_protected :state, :tip_id
   
   before_validation :add_protocol

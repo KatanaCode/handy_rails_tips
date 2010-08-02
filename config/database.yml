@@ -4,16 +4,21 @@ defaults: &defaults
   reconnect: false
   pool: 5
   username: root
-  password: jhb01
 
 development:
   database: handy_rails_tips_development
   <<: *defaults
+  password: 
+  
   
 test:
   database: handy_rails_tips_test
   <<: *defaults
+  password: 
+  
   
 production:
   database: handy_rails_tips_production
   <<: *defaults
+  password: jhb01
+  
