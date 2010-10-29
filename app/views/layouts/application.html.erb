@@ -10,7 +10,8 @@
   <meta name="resource-type" content="document" />
 	<meta name="keywords" content="rails, rails tutorials, ruby on rails, tutorials, tips, help, <%= @tip.tag_list if @tip %>" />
 	<%= stylesheet_link_tag %W( reset generic application coderay ), :cache => true %>
-	<%= javascript_include_tag :all %>	
+	<%= javascript_include_tag :all %>
+  <%= javascript_include_tag "http://google-analytics.com/ga.js" if Rails.env == "production" %>
 	<%= auto_discovery_link_tag :rss, "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" %>
 	<%= yield(:head) %>
 </head>
