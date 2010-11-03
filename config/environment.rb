@@ -5,7 +5,7 @@ Rails::Initializer.run do |config|
 
   config.load_paths += %W( #{RAILS_ROOT}/app/observers )
   config.gem 'will_paginate', :lib => 'will_paginate',  :version => '>=2.2.2'
-  config.gem "RedCloth",      :lib => false,            :version => ">=4.1.9"
+  # config.gem "RedCloth",      :lib => false,            :version => ">=4.1.9"
   config.gem "coderay",       :lib => false,            :version => ">=0.8.312"
   config.gem "markaby",                                 :version => ">=0.5"
   config.gem "less",                                    :version => ">=0.8.9"

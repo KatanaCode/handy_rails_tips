@@ -1,30 +1,34 @@
 set :application, "handy_rails_tips"
-set :deploy_to, "/home/gavin/public_html/handy_rails_tips/"
+set :user, "root"
+set :runner, user
+
+set :port, 9021
+
+set :deploy_to, "/#{user}/handy_rails_tips/"
 set :domain,  "handyrailstips.com"
 
- 
-role :app, "204.232.194.123"
-role :web, "204.232.194.123"
-role :db,  "204.232.194.123", :primary => true
- 
+role :app, "178.79.136.234"
+role :web, "178.79.136.234"
+role :db,  "178.79.136.234", :primary => true
+
+ssh_options[:paranoid]    = false 
+ssh_options[:port]        = 9021
+default_run_options[:pty] = true 
+
+
 set :scm, "git"
 set :scm_verbose, true 
 set :repository,  "git@github.com:GavinM/handy_rails_tips.git"
 set :scm_user, "gavinM"
 set :scm_passphrase, "1sickpuppy"
- 
-default_run_options[:pty] = true
 
-set :user, "gavin"
-set :runner, user
- 
+
 namespace :deploy do
   task :start, :roles => :app do
     run "touch #{current_release}/tmp/restart.txt"
   end
  
   task :stop, :roles => :app do
-    # Do nothing.
   end
  
   desc "Restart Application"
