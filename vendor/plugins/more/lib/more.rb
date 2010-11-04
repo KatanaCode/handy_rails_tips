@@ -42,7 +42,7 @@ class Less::More
     def compression?
       get_cvar(:compression)
     end
-
+  
     # Check wether or not we should page cache the generated CSS
     def page_cache?
       (not heroku?) && page_cache_enabled_in_environment_configuration?
@@ -126,7 +126,7 @@ class Less::More
         css.delete!("\n") if self.compression?
         css = (HEADER % [source.to_s]) << css if self.header?
       end
-
+  
       css
     end
     
@@ -137,15 +137,15 @@ class Less::More
         relative_path = path.relative_path_from(Less::More.source_path)
         path_as_array = relative_path.to_s.split(File::SEPARATOR)
         path_as_array[-1] = File.basename(path_as_array[-1], File.extname(path_as_array[-1]))
-
+  
         # Generate CSS
         css = Less::More.generate(path_as_array)
-
+  
         # Store CSS
         path_as_array[-1] = path_as_array[-1] + ".css"
         destination = Pathname.new(File.join(Rails.root, "public", Less::More.destination_path)).join(*path_as_array)
         destination.dirname.mkpath
-
+  
         File.open(destination, "w") {|f|
           f.puts css
         }
