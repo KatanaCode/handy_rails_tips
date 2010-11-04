@@ -4,7 +4,7 @@ set :runner, user
 
 set :port, 9021
 
-set :deploy_to, "/#{user}/handy_rails_tips/"
+set :deploy_to, "/var/www/handy_rails_tips/"
 set :domain,  "handyrailstips.com"
 
 role :app, "178.79.136.234"
