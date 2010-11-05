@@ -372,3 +372,29 @@ div.notice {
   border: thin solid #6cb83a;
 }
 .field_with_errors { background: #ffccbb; }
+
+#tips_list{
+	
+}
+#tips_list li{
+	margin: 1em 0;
+	
+}
+#tips_list li a:hover{
+	color: #900;
+}
+h3.archive{
+	margin: 1em 0;
+}
+/*.tip_preview{
+	border: thin solid #222;
+	padding: 2em;
+	width: 600px;
+	height: auto;
+	background: #f6f9f9;
+	display:none;
+	position: fixed;
+	font-size: 0.8em;
+	top: 10em;
+	left: 20em;
+}*/

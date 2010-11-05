@@ -37,13 +37,11 @@
 		<%- end -%>
 		<div id='navbar'>
 			<ul>
-				<%= content_tag(:li, link_to("home", root_url, :title => "home"), :id => "first_li") %>
-				<%= content_tag(:li, link_to("more tips", tips_url, :title => "tips")) %>
 				<%= content_tag(:li, link_to("write a tip", new_tip_path, :title => "write a tip")) if logged_in? %>
 				<%= content_tag(:li, link_to("about", about_url, :title => "about")) %>
 				<%= content_tag(:li) do %>
 				  <% if logged_in? %>
-				    <%= link_to("log out", session_path(current_user.id), :method => :delete) %>
+				    <%= link_to("log out", session_path, :method => :delete) %>
 				  <% else %>
 				    <%= link_to("log in", new_session_path) %>
 				  <% end %>
@@ -71,6 +69,16 @@
   			  <br />
   				<%= render  'layouts/amazon' %>
   				<br />
+  				<% unless controller.controller_name == "about" %>
+    				<h3 class="archive">Archive</h3>
+    				<% cache("tips_list") do %>
+    				  <ul id="tips_list">
+    				    <% Tip.order("id DESC").each do |t| %>
+    				      <li><%= link_to(t.title, t) %></li>
+    				    <% end %>
+    				  </ul>
+    				<% end %>
+  				<% end %>
   			</div>
 			  
 			</div>
@@ -86,10 +94,9 @@
 	</div>
 	
 	<%= javascript_include_tag :all %>
-  <%= javascript_include_tag "http://google-analytics.com/ga.js" if Rails.env == "production" %>
   <%= render 'layouts/google_analytics' if RAILS_ENV == "production" %>
-
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <%= javascript_include_tag "http://google-analytics.com/ga.js" if Rails.env == "production" %>	
 	<script type="text/javascript">google.load("elements", "1", {packages: "transliteration"});</script>
 	<script type="text/javascript" src="http://www.google.com/coop/cse/t13n?form=cse-search-box&amp;t13n_langs=en"></script>
 	<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>

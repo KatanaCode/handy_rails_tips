@@ -1,13 +1,11 @@
-
-
-function externalLinks() {
-	if (!document.getElementsByTagName) return;
-	var anchors = document.getElementsByTagName("a");
-	for (var i = 0; i < anchors.length; i++) {
-	  var anchor = anchors[i];
-	  if (anchor.getAttribute("href") && anchor.getAttribute("rel") == "external") 
-	    anchor.target = "_blank"; 
-	}
-}
-window.onload = externalLinks;
-
+jQuery(document).ready(function(){
+	// jQuery("#tips_list li").mouseenter(function(){
+	// 	tipId = jQuery(this).attr("data-tip-id");
+	// 	jQuery("#tip_" + tipId + "_preview").show();
+	// });
+	// jQuery("#tips_list li").mouseleave(function(){
+	// 	tipId = jQuery(this).attr("data-tip-id");
+	// 	jQuery("#tip_" + tipId + "_preview").hide();
+	// });
+	
+})
