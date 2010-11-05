@@ -23,7 +23,7 @@
 		</p>
 	</div>
 	<p class='float_right'>
-  <%-  if logged_in?(@tip.user) -%>
+  <%-  if logged_in? -%>
     <%= link_to "edit tip", edit_tip_path(@tip) %> |
     <%= link_to "remove", @tip, :method => :delete, :confirm => 'Are you sure?' %>
   <%- end -%>
