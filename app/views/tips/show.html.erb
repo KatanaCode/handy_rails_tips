@@ -23,14 +23,9 @@
 		</p>
 	</div>
 	<p class='float_right'>
-		<%-  if this_user_logged_in?(@tip.user) -%>
-			  <%= link_to "edit tip", edit_tip_path(@tip) %> |
-				<%= link_to "remove", @tip, :method => :delete, :confirm => 'Are you sure?' %>
-		<%- end -%>
+  <%-  if logged_in?(@tip.user) -%>
+    <%= link_to "edit tip", edit_tip_path(@tip) %> |
+    <%= link_to "remove", @tip, :method => :delete, :confirm => 'Are you sure?' %>
+  <%- end -%>
 	</p>
-	<%- unless this_user_logged_in?(@tip.user) -%>
-		<div id="add_to_favorites" class="align_right clear_both">
-			<%= render :partial => 'favorites/add_to_faves', :locals => {:favorite => @favorite} %>
-		</div>
-	<%- end -%>
   <%= intense_debate_comments(@tip) %>
