@@ -8,7 +8,7 @@
 	<meta name="rating" content="general" />
   <meta name="resource-type" content="document" />
 	<meta name="keywords" content="ruby on rails, tutorials, rails, rails tutorials, tips, help, <%= @tip.tag_list if @tip %>" />
-	<%= stylesheet_link_tag %W( reset generic application coderay ), :cache => true %>
+	<%= stylesheet_link_tag %W( reset generic application coderay )%>
 	<%= auto_discovery_link_tag :rss, "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" %>
 	<%= yield(:head) %>
 </head>
