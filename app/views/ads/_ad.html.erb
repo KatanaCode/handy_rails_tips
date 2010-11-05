@@ -1,5 +1,0 @@
-<%- div_for(ad) do -%>
-	<%- link_to ad.url, :rel => "external" do -%> 
-		<%= image_tag(ad.image_path, :alt => "#{ad.company}: #{ad.url}", :title => "#{ad.company}") %>
-	<%- end -%>
-<%- end -%>

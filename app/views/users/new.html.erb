@@ -1,7 +1,0 @@
-<%- title "Create An Account" -%>
-<h2>Create An Account</h2>
-<% form_for @user do |f| -%>
-	<%= render :partial => 'form', :locals => {:f => f} %>
-	<p class='check_box'><%= f.label :terms, "I accept the #{link_to 'terms of use', terms_path}" %><%= f.check_box :terms %></p>
-	<p class='submit'><%= f.submit "sign up", :disable_with => 'logging in...' %></p>
-<% end -%>
