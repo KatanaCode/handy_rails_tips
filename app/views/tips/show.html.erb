@@ -12,14 +12,8 @@
 	</p>
 	
 	<div class='smaller user_about'>
-		<div class='float_left' style='margin-right: 0.2em'>
-			<%= gravatar_image(@tip.user.email, @tip.user.username, :size => 40) %>
-		</div>
-		<p>
-			posted on <%= @tip.created_at.to_formatted_s(:main) %>
+		<p>posted on <%= @tip.created_at.to_formatted_s(:main) %>
 			<%= " - last updated on #{@tip.updated_at.to_formatted_s(:main)}" if @tip.has_changed? %>
-			by <%= @tip.user.url ? link_to(@tip.user.username, @tip.user.url) : @tip.user.username %><br />
-			<%= @tip.user.about %>
 		</p>
 	</div>
 	<p class='float_right'>
