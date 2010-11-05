@@ -5,7 +5,7 @@
   <%= div_for tip do -%>
     <%= content_tag :h3, link_to(tip.title, tip, :class =>"tip_title_link") %>
     <%= tip_body(tip.body).html_safe %>
-    <!-- <p class='float_right grey'><%= comments_count_link(tip, :url => tip_path(tip)) %></p> -->
+    <p class='float_right grey'><%= comments_count_link(tip, :url => tip_path(tip)) %></p>
   <%- end -%>
 
   <%= clearfix %>	
