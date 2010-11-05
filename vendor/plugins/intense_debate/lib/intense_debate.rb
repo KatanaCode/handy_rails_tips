@@ -10,7 +10,6 @@ module IntenseDebate
       options[:url].is_a?(String) # => ensure the url is a string
       options[:title].is_a?(String) # => ensure the url is a string
       ret_content = "<script type=\"text/javascript\">\n"
-      ret_content << 
       ret_content << "  var idcomments_acct = '#{options[:acct_no]}';\n"
       ret_content << "  var idcomments_post_id = '#{obj.id}';\n"
       ret_content << "  var idcomments_post_url#{"='#{options[:url]}'" if options[:url]};\n"

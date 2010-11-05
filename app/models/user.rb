@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base  
 
+  ROLES         = {:admin => 1, :standard => 2}
+
+  RESERVED_NAMES = %w( admin root handyrailstips webmaster )
+
   # TODO - fix me
   def self.validates_permitted(attribute, options = { :message => "is not permitted"})
     options.to_options!
@@ -24,7 +28,7 @@ class User < ActiveRecord::Base
     
   has_many :favorites, :dependent => :destroy
   has_many :feedbacks
-  has_many :tips, :include => :comments, :conditions => ['state != ?', STATES[:removed]], :dependent => :destroy
+  has_many :tips, :include => :comments, :conditions => ['state != ?', Tip::STATES[:removed]], :dependent => :destroy
   has_many :votes
   
   attr_protected :kudos, :role, :last_login, :this_login, :salt, :token

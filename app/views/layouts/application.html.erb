@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 <head>
-	<title><%= "#{yield(:title)} - #{slogan}" %></title>
+	<title><%= yield(:title) %> - Ruby on Rails Tutorials</title>
 
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<meta name="author" content="Gavin Morrice" />
@@ -42,38 +42,43 @@
 				<%= content_tag(:li, link_to("write a tip", new_tip_path, :title => "write a tip")) if logged_in? %>
 				<%= content_tag(:li, link_to("about", about_url, :title => "about")) %>
 				<%= content_tag(:li) do %>
-				  <%= logged_in? ? link_to("log out", sessions_path, :method => :delete) : link_to("log in", new_session_path) %>
+				  <% if logged_in? %>
+				    <%= link_to("log out", session_path(current_user.id), :method => :delete) %>
+				  <% else %>
+				    <%= link_to("log in", new_session_path) %>
+				  <% end %>
 				<% end %>
 			</ul>
-			<div id='login'>
-			</div>
+
 		</div>
 		<div id="content">
 			<div id="collapse">
-			  
 			  <%= render 'layouts/flash_notice' unless flash.empty? %>
 			  
 			  <% if @show_head %>
 			    <h2 class=""><%= link_to yield(:title), params, :class => "tip_title_link" %></h2>
-			  <% end %>
-				
+			  <% end %>				
 			  
-				<div id='yield'>				  
+			  <div id='yield'>				  
 
 					<%= yield %>					
 				</div>
+				
+  			<div id='right_bar'>
+  				<%= render  'layouts/search_form' %>
+  				<br />
+  				<%= render  'layouts/google_ads' %>
+  			  <br />
+  				<%= render  'layouts/amazon' %>
+  				<br />
+  			</div>
+			  
 			</div>
-			<div id='right_bar'>
-				<%= render  'layouts/search_form' %>
-				<br />
-				<%= render  'layouts/google_ads' %>
-			  <br />
-				<%= render  'layouts/amazon' %>
-				<br />
-			</div>
+			<%= clearfix %>
 		</div>
-		<div id="push">
-		</div>
+		
+		<div id="push"></div>
+		
 	</div>
 	<div id="footer">
 		<p class='float_left'>Site by <a href="http://gavinmorrice.com">Gavin Morrice</a> &copy; 2009 - <%= Date.today.year %></p>

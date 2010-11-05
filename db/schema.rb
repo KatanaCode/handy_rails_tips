@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101105144945) do
+ActiveRecord::Schema.define(:version => 20090513094924) do
 
   create_table "ads", :force => true do |t|
     t.string   "url"
@@ -113,7 +113,6 @@ ActiveRecord::Schema.define(:version => 20101105144945) do
     t.integer  "state",      :limit => 1,   :default => 1,  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "preview"
   end
 
   add_index "tips", ["user_id"], :name => "index_tips_on_user_id"

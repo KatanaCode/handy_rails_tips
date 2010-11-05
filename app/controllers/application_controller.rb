@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
 
+  protect_from_forgery
+
   ID_ACCT_NO = "f6f857ecb1bf718d7c85b1170bf9bbf8"  
 
-  helper :application, :layouts, :tips
-  protect_from_forgery
+  helper :all
+
 
   before_filter :fetch_current_user
   helper_method :current_user, :logged_in?, :this_user_logged_in?, :admin_logged_in?, :flagged_message, :slogan, :add_to_favorites

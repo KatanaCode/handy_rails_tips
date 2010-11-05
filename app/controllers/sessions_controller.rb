@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
     if @user
       session[:user_id] = @user.id
-      redirect_to admin_url, :notice => "Successfully logged in!"
+      redirect_to tips_url, :notice => "Successfully logged in!"
     else
       flash[:error] = "Your login details were incorrect"
       render :new

@@ -1,4 +1,12 @@
 class Tip < ActiveRecord::Base    
+  
+  STATES = {
+    :unflagged => 1,
+    :flagged => 2,
+    :allowed => 3,
+    :removed => 4,
+    
+  }
   acts_as_taggable
   
   before_save :strip_spaces_from_title

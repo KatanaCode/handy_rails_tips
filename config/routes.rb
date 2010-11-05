@@ -1,7 +1,7 @@
 HandyRailsTips::Application.routes.draw do
 
   resource :admin, :only => [:show], :controller => "admin"
-  resources :sessions, :except => [:index, :show, :edit, :update]
+  resources :sessions#, :except => [:index, :show, :edit, :update]
   resources :tips
 
   match "sitemap"    => "feeds#sitemap",     :as => "sitemap"

@@ -5,7 +5,7 @@ orange #F5AD00
 purple #EC53AD*/
 html {
 	font-family: verdana, helvetica, sans-serif;
-	font-size: 14px;
+	font-size: 15px;
 	height: 100%;
 }
 body {
@@ -134,34 +134,34 @@ div#navbar{
 	color: #DDDDDD;
 }
 div#content{
-	min-width: 960px;
-	width: auto !important;
 	width: 100%;
-	background: #F6F9F9 url(/images/grad.png) repeat-x scroll left top;
+	margin: 0;
+	padding: 0;
+	background: #F6F9F9 url(/images/grad.png) repeat-x scroll left top;	
 	border-bottom: thin solid #111111;
 }
-div#collapse{
-	background: inherit;
-	text-align: center;
-	float: left;
-	min-width: 760px;
-	width: 80%;
+#collapse{
+	padding: 0;
+	margin: 0 auto;
+	width: 70em;
+	
 }
 h2{
-	margin: 2em 0 0;
+	padding: 2em 0 0;
 }
 div#yield{
 	text-align: left;
+	float:left;
 	margin: 0 auto 0;
-	width: 760px;
-	padding: 3em;
+	width: 50em;
+	padding: 1em 0;
 }
 
 div#right_bar{
-	background: inherit;
-	float: left;
-	text-align: center;
-	width: 20%;
+	float: right;
+	text-align: left;
+	width: 14em;
+	padding: 0 1em;
 }
 #amazoncontent{
 	display:none;
@@ -209,8 +209,6 @@ div.comment{
 .tip_title_link {
 	color: #900;
 	font-size: 1.6em;
-	border-bottom: thin dotted #733;
-	
 }
 .tip_title_link:visited {color: #733;
 	border-bottom: none;
