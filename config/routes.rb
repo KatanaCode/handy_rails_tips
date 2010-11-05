@@ -1,55 +1,58 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resources :newsletters
+HandyRailsTips::Application.routes.draw do
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
 
+  # Sample of regular route:
+  #   match 'products/:id' => 'catalog#view'
+  # Keep in mind you can assign values other than :controller and :action
 
-  map.root                      :controller => "homepages"
-  map.admin       "admin",      :controller => "admin"
-  map.my_profile  "my_profile", :controller => "users",     :action => "my_profile"
-  map.login       "login",      :controller => "sessions",  :action => "new"
-  map.logout      "logout",     :controller => "sessions",  :action => "destroy"
-  map.notice      "notice",     :controller => "homepages", :action => "notice"
-  map.search      "search",     :controller => "searches",  :action => "show"
+  # Sample of named route:
+  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+  # This route can be invoked with purchase_url(:id => product.id)
 
-  map.with_options :controller => "homepages" do |home|
-    home.about       "about",       :action => "about"
-    home.terms     "terms_of_use",  :action => "terms"
-    home.advertise   "advertise",   :action => "advertise"  
-    home.help        "help",        :action => "help"
-  end
+  # Sample resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
 
-  map.view_log    "view_log",   :controller => "admin",     :action => "view_log"
-  map.clear_log   "clear_log",  :controller => "admin", :action => "clear_log"
-  map.backup_log   "backup_log",  :controller => "admin", :action => "backup_log"
+  # Sample resource route with options:
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
 
-  map.with_options :controller => "feeds" do |feeds|
-    feeds.sitemap     "sitemap.xml",         :action => "sitemap", :format => :xml
-    feeds.rss             "rss",         :action => "latest_tips", :format => :rss
-    feeds.comments_feed "comments_feed", :action => "comments", :format => :rss
-  end
-  
-  map.forgot_password 'forgot_password',   :controller => "forgot_password", :action => "index"
-  map.login_with_token "login_with_token", :controller => "sessions",        :action => "login_with_token"
-  map.reset_password 'reset_password',   :controller => "users",             :action => "reset_password"
-  map.change_password 'change_password', :controller => "users",             :action => "change_password" 
-  
-  map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
-  
-  map.resources :ads, :collection => {:sort => :post}
-  map.resources :comments, :member => {:allow => :get, :remove => :get}, :except => [:edit, :update, :show]
-  map.resources :favorites, :collection => {:create => [:get, :post]}
-  map.resources :feedbacks, :except => [:edit, :update, :show]
-  map.resources :newsletters, :member => {:send_email => :get}
-  map.resources :searches, :only => [:create, :index, :destroy]
-  map.resources :subscribers, :except => [:edit, :update, :show]
-  map.resources :tips, :member => {:flag => :get, :allow => :get, :remove => :get} do |tip|
-    tip.resources :comments, :member => {:flag => :get, :allow => :get, :remove => :get}, :except => [:edit, :update, :show]
-  end
-  map.resources :users, :collection => {:my_profile => :get}
-  
-  map.connect "robots.txt", :controller => "robots"
-  
-  map.connect "javascripts/update_tip.js", :controller => "javascripts", :action => "update_tip", :format => "js"
-  
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  # Sample resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
+
+  # Sample resource route with more complex sub-resources
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', :on => :collection
+  #     end
+  #   end
+
+  # Sample resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
+
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  # root :to => "welcome#index"
+
+  # See how all your routes lay out with "rake routes"
+
+  # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # Note: This route will make all actions in every controller accessible via GET requests.
+  # match ':controller(/:action(/:id(.:format)))'
 end

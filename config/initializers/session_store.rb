@@ -1,6 +1,8 @@
-ActionController::Base.session = {
-  :key => '_tips_session',
-  :secret      => 'ab25d67b0823ee1fdc00b17bd4ad6f4e25ea7688a39dd315933cb0065a5d3dac311230d52d1f311013a0466276c0747dbdd651709376acc87309ba6d54e77c13'
-}
+# Be sure to restart your server when you modify this file.
 
-ActionController::Base.session_store = :active_record_store
+HandyRailsTips::Application.config.session_store :cookie_store, :key => '_handy_rails_tips_session'
+
+# Use the database for sessions instead of the cookie-based default,
+# which shouldn't be used to store highly confidential information
+# (create the session table with "rake db:sessions:create")
+# HandyRailsTips::Application.config.session_store :active_record_store
