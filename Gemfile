@@ -8,3 +8,4 @@ gem "RedCloth",      :require => false
 gem "coderay",       :require => false
 gem "markaby"                         
 gem "less"
+gem "capistrano"

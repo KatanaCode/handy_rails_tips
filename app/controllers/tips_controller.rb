@@ -2,7 +2,8 @@ class TipsController < ApplicationController
 
   
   user_login_required :only => [:new,:create, :edit, :destroy, :update]
-
+  
+  caches_page :show
     
   def index
     respond_to do |format|

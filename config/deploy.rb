@@ -35,4 +35,10 @@ namespace :deploy do
   task :restart, :roles => :app do
     run "touch #{current_release}/tmp/restart.txt"
   end
+  
+  desc "Run Bundle Installer"
+  task :bundle_install do
+    run "cd #{current_release} && bundle install"
+  end
 end
+before "deploy:restart", "deploy:bundle_install"
