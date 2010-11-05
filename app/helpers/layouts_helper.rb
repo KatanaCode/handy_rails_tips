@@ -13,8 +13,9 @@ module LayoutsHelper
           input :type => "hidden", :value => "en_US", :name => "loc"
         end
       end
-    end
+    end.to_s.html_safe
   end
+  
 
   def markaby(&block)
     Markaby::Builder.new({}, self, &block)

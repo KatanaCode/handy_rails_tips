@@ -22,7 +22,7 @@ module TipsHelper
     body
   end
   
-  def partial_tip_body(body, tip)
+  def partial_tip_body(body)
     body = wrap_in_braces( body )
     xml_to_braces(body)
     strip_html_and_convert_to_redcloth(body)

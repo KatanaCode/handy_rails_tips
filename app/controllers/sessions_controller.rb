@@ -8,26 +8,16 @@ class SessionsController < ApplicationController
 
     if @user
       session[:user_id] = @user.id
-      redirect_to my_profile_url
+      redirect_to admin_url, :notice => "Successfully logged in!"
     else
       flash[:error] = "Your login details were incorrect"
-      render "new"
+      render :new
     end
   end
   
-  def login_with_token
-    @user = User.find params[:id]
-    if @user.token == params[:token]
-      session[:user_id] = @user.id
-      @user.reset_token
-      redirect_to reset_password_path
-    else
-      flash[:error] = "The link you followed was not valid"
-      redirect_to notice_path
-    end
-  end
   
   def destroy
     session[:user_id] = @current_user = nil
+    redirect_to root_url, :notice => "Successfully logged out!"    
   end
 end

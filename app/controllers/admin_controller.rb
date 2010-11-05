@@ -5,10 +5,8 @@ class AdminController < ApplicationController
   skip_before_filter :new_subscriber, :only => [:clear_log]
   skip_before_filter :new_search, :only => [:clear_log]
     
-  def index
-    @flagged_tips_count       = Tip.count_by_sql("SELECT COUNT(*) FROM tips WHERE tips.state = #{STATES[:flagged]}")
-    @flagged_comments_count   = Comment.count_by_sql("SELECT COUNT(*) FROM comments WHERE comments.state = #{STATES[:flagged]}")
-    @unsent_newsletters_count = Newsletter.count_by_sql("SELECT COUNT(*) FROM newsletters WHERE newsletters.sent_at = null")
+  def show
+    @tips = Tip.all
   end
   
   def view_log

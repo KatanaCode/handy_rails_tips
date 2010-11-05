@@ -3,13 +3,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
 
-  config.load_paths += %W( #{RAILS_ROOT}/app/observers )
-  config.gem 'will_paginate', :lib => 'will_paginate'
-  config.gem "RedCloth",      :lib => false,         
-  config.gem "coderay",       :lib => false,         
-  config.gem "markaby",                              
-  config.gem "less", :lib => false
-    
+config.load_paths += %W( #{RAILS_ROOT}/app/observers )    
   Dir.chdir("#{Rails.root}/app/observers") do
     config.active_record.observers = Dir.glob("*_observer.rb").collect {|ob_name| ob_name.split(".").first}
   end

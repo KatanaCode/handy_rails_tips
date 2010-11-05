@@ -1,22 +1,30 @@
-	<% javascript("update_tip") %>
-  <%= error_messages_for :tip, 
-				:header_message => "You can't #{ @tip.new_record? ? "publish" : "save" } your tip yet!",
-				:header_tag => "p" %>
+<%= form_for @tip do |f| %>
+
   <p>
     <%= f.label :title, "Title of your tip (max 80 chars)" %>
     <%= f.text_field :title %>
   </p>
-  <p style='margin:1em 0;'>
-    <%= f.label :body, "Write your tip below (#{link_to('need help?', "/help#redcloth", :rel => "external")})" %>
+
+  <p>
+    <%= f.label :body, "Write your tip below" %>
     <%= f.text_area :body %>
   </p>
+  
+  <p>
+    <%= f.label :preview %><br />
+    <%= f.text_area :preview %>
+  </p>
+  
+
 	<div id='preview_options'>
 		<%= render :partial => 'preview_options' %>
 	</div>
-	<div id ="preview_tip" style = '<%= current_user.use_ajax ? nil : "display:none;" %>'>
-	</div>
+
+
   <p class='clear_both' style='margin:1em 0;'>
 		<%= f.label :tag_list, "List of tags (separate with commas)" %>
 		<%= f.text_field :tag_list %>
   </p>
-	
+
+  <p class='submit'><%= f.submit "post tip", :disable_with => "posting tip..." %></p>
+<% end %>

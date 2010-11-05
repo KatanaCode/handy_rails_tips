@@ -9,15 +9,16 @@ module IntenseDebate
       raise "Intense Debate account no. doesn't look valid" unless options[:acct_no] =~ /[\w]{32}/ # => ensure the account no is valid
       options[:url].is_a?(String) # => ensure the url is a string
       options[:title].is_a?(String) # => ensure the url is a string
-      concat "<script type=\"text/javascript\">\n"
-      concat "  var idcomments_acct = '#{options[:acct_no]}';\n"
-      concat "  var idcomments_post_id = '#{obj.id}';\n"
-      concat "  var idcomments_post_url#{"='#{options[:url]}'" if options[:url]};\n"
-      concat "  var idcomments_post_title#{"='#{options[:title]}'" if options[:title]};\n"
-      concat "</script>\n"
-      concat "<span id='IDCommentsPostTitle' style='display:none'></span>\n"
-      concat "<script type='text/javascript' src='http://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>\n"
-      nil
+      ret_content = "<script type=\"text/javascript\">\n"
+      ret_content << 
+      ret_content << "  var idcomments_acct = '#{options[:acct_no]}';\n"
+      ret_content << "  var idcomments_post_id = '#{obj.id}';\n"
+      ret_content << "  var idcomments_post_url#{"='#{options[:url]}'" if options[:url]};\n"
+      ret_content << "  var idcomments_post_title#{"='#{options[:title]}'" if options[:title]};\n"
+      ret_content << "</script>\n"
+      ret_content << "<span id='IDCommentsPostTitle' style='display:none'></span>\n"
+      ret_content << "<script type='text/javascript' src='http://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>\n"
+      ret_content.html_safe
     end
 
     def comments_count_link(obj, options = {})
@@ -29,14 +30,14 @@ module IntenseDebate
       raise "Intense Debate account no. doesn't look valid" unless options[:acct_no] =~ /[\w]{32}/ # => ensure the account no is valid
       options[:url].is_a?(String) # => ensure the url is a string
       options[:title].is_a?(String) # => ensure the url is a string
-      concat "<script type=\"text/javascript\">\n"
-      concat "  var idcomments_acct = '#{options[:acct_no]}';\n"
-      concat "  var idcomments_post_id = '#{obj.id}';\n"
-      concat "  var idcomments_post_url#{"='#{options[:url]}'" if options[:url]};\n"
-      concat "  var idcomments_post_title#{"='#{options[:title]}'" if options[:title]};\n"
-      concat "</script>\n"
-      concat "<script type=\"text/javascript\" src=\"http://www.intensedebate.com/js/genericLinkWrapperV2.js\"></script>\n"
-      nil
+      ret_content = "<script type=\"text/javascript\">\n"
+      ret_content << "  var idcomments_acct = '#{options[:acct_no]}';\n"
+      ret_content << "  var idcomments_post_id = '#{obj.id}';\n"
+      ret_content << "  var idcomments_post_url#{"='#{options[:url]}'" if options[:url]};\n"
+      ret_content << "  var idcomments_post_title#{"='#{options[:title]}'" if options[:title]};\n"
+      ret_content << "</script>\n"
+      ret_content << "<script type=\"text/javascript\" src=\"http://www.intensedebate.com/js/genericLinkWrapperV2.js\"></script>\n"
+      ret_content.html_safe
     end
     
     protected

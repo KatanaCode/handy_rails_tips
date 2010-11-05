@@ -1,39 +1,36 @@
 <%- title "#{h @tip.title}" -%>
-	<h2><%= link_to @tip.title, nil, :class => "tip_title_link" %></h2>
+		
 	<div id='tip_body_div'>
-		<%- cache(:controller => "tips", :action => "show", :id => @tip.id) do -%>	
-	  	<%= tip_body(@tip.body) %>
+		<%- cache :controller => "tips", :action => "show", :id => @tip.id do -%>	
+	  	<%= tip_body(@tip.body).html_safe %>
 		<%- end -%>
 	</div>
+	
 	<p class='align_right'>
 		<script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=d8ddea73-a9e8-4458-9f42-274e75282826&amp;type=website&amp;headerfg=%23f8f8f8&amp;headerbg=%23068ac7&amp;headerTitle=Send%20this%20tip%20via...">
 		</script>
 	</p>
+	
 	<div class='smaller user_about'>
 		<div class='float_left' style='margin-right: 0.2em'>
-			<%= gravatar_image(@user.email, @user.username, :size => 40) %>
+			<%= gravatar_image(@tip.user.email, @tip.user.username, :size => 40) %>
 		</div>
 		<p>
 			posted on <%= @tip.created_at.to_formatted_s(:main) %>
 			<%= " - last updated on #{@tip.updated_at.to_formatted_s(:main)}" if @tip.has_changed? %>
-			by <%= @user.url ? link_to(@user.username, @user.url) : @user.username %><br />
-			<%= @user.about %>
+			by <%= @tip.user.url ? link_to(@tip.user.username, @tip.user.url) : @tip.user.username %><br />
+			<%= @tip.user.about %>
 		</p>
 	</div>
 	<p class='float_right'>
-		<%-  if this_user_logged_in?(@user) -%>
+		<%-  if this_user_logged_in?(@tip.user) -%>
 			  <%= link_to "edit tip", edit_tip_path(@tip) %> |
-				<%= link_to "remove", remove_tip_path(@tip), :confirm => 'Are you sure?' %>
+				<%= link_to "remove", @tip, :method => :delete, :confirm => 'Are you sure?' %>
 		<%- end -%>
 	</p>
-	<%- unless this_user_logged_in?(@user) -%>
+	<%- unless this_user_logged_in?(@tip.user) -%>
 		<div id="add_to_favorites" class="align_right clear_both">
 			<%= render :partial => 'favorites/add_to_faves', :locals => {:favorite => @favorite} %>
 		</div>
 	<%- end -%>
-	<%= content_tag :p, link_to("flag as inappropriate", flag_tip_path(@tip), :rel => "nofollow"), :class => "align_right clear_both" if @tip.state == STATES[:unflagged] %>
-	<p class='clear_both'>
-		<%= link_to "allow", allow_tip_path(@tip) if admin_logged_in? %>
-		<%= link_to "remove tip", remove_tip_path(@tip) if admin_logged_in? || @current_user == @user  %>
-	</p>
-<%= intense_debate_comments(@tip) %>
+  <%= intense_debate_comments(@tip) %>

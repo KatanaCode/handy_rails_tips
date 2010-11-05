@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
   
   validates_permitted :username, :in => RESERVED_NAMES, :message => "is not available"
     
-  named_scope :subscribers, :conditions => {:subscribed => true}
+  scope :subscribers, :conditions => {:subscribed => true}
   
   attr_accessor :password
   attr_accessor :updating_password

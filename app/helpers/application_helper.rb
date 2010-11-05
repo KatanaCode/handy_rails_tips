@@ -2,7 +2,8 @@ module ApplicationHelper
   require 'digest/md5'
   require "lib/string"
 
-  def title title
+  def title title, show_head = true
+    @show_head = show_head
     content_for :title do
       title
     end
@@ -20,11 +21,14 @@ module ApplicationHelper
   end
 
   def gravatar_url_for(email, options = {})
-    url_for({:gravatar_id => Digest::MD5.hexdigest(email), :host => 'www.gravatar.com', :protocol => 'http://', :only_path => false, :controller => 'avatar.php'}.merge(options)) 
+    "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest(email)}&size=40"    
   end
   
   def redcloth_this(text)
     RedCloth.new(text).to_html
+  end
+  def clearfix
+    "<br class='clear_both' />".html_safe
   end
   
 end

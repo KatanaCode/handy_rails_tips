@@ -1,7 +1,0 @@
-<p class='float_right'>
-		<%= link_to_remote(current_user.use_ajax ? 'hide preview' : 'show preview', 
-					:url => { :controller => "tips", :action => "change_ajax_opts" }) %>
-
-</p>
-<%# observe_field :tip_body, :frequency => 2, :url => {:action => "preview"}, 
-									:with => "q" if current_user.use_ajax %>

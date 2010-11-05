@@ -4,9 +4,13 @@ class ApplicationController < ActionController::Base
 
   helper :application, :layouts, :tips
   protect_from_forgery
-  filter_parameter_logging :password
-  before_filter :fetch_current_user, :fetch_ads  
+
+  before_filter :fetch_current_user
   helper_method :current_user, :logged_in?, :this_user_logged_in?, :admin_logged_in?, :flagged_message, :slogan, :add_to_favorites
+
+  def self.user_login_required(options={})
+    before_filter :user_login_required, options
+  end
 
   def logged_in?
     @current_user
@@ -71,10 +75,6 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-
-  def fetch_ads
-    @ads = Ad.find :all, :order => "rand()"
-  end
 
   def fetch_current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id] 

@@ -1,37 +1,23 @@
 class TipsController < ApplicationController
-  before_filter :user_login_required, :only => [:new,:create, :edit, :destroy, :update]
-  skip_before_filter :fetch_ads, :only => [:change_ajax_opts, :preview]
+
   
+  user_login_required :only => [:new,:create, :edit, :destroy, :update]
+
+    
   def index
     respond_to do |format|
-      
       format.html {
-        @tips = 
-        if current_user and current_user.admin?
-          Tip
-        else
-          Tip.for_public
-        end.paginate :all, :per_page => 10, :page => params[:page] || 1
+        @tips = Tip.paginate :per_page => 10, :page => params[:page] || 1
       }
-      
-      format.xml{
-        @tips = Tip.for_public.all :select => "id, title"
+      format.xml {
+        @tips = Tip.select("id, title").all
         render :xml => @tips
       }
-      
     end
   end
   
   def show
     @tip = Tip.find(params[:id])    
-    @user = @tip.user
-    @comment = Comment.new
-    @comments = @tip.comments
-    @session_comments = session[:comments] ? Comment.find(session[:comments]) : nil
-    @favorite = Favorite.find :first, :conditions => {:user_id => current_user.id, :tip_id => @tip.id} if logged_in?
-    return if @tip.safe?
-    admin_logged_in? ? return : redirect_to(notice_url)
-    flash[:warning] = flagged_message("tip")
   end
   
   def new
@@ -95,9 +81,6 @@ class TipsController < ApplicationController
     redirect_to my_profile_url unless admin_logged_in?
   end
   
-  def change_ajax_opts
-    
-  end
   
   def preview
   end

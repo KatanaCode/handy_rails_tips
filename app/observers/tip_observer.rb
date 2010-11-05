@@ -1,6 +1,8 @@
-require 'net/http'
-require 'uri'
 class TipObserver < ActiveRecord::Observer
+  
+  require 'net/http'
+  require 'uri'
+  
   include ActionController::UrlWriter 
   default_url_options[:host] = 'www.handyrailstips.com' 
   

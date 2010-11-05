@@ -1,9 +1,0 @@
-<%- form_for @subscriber do |f| -%>
-	<p>
-		<%= f.label :email, "Join mailing list" %><br />
-		<%= f.text_field :email, :value => "email address", 
-			:onfocus => "this.value = '';this.style.color='#222';" %>
-		<%= f.submit "join" %>
-	</p>
-	<%= error_message_on :subscriber, :email, :prepend_text => "Email ", :css_class => "form_error" %>
-<%- end -%>

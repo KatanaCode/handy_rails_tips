@@ -16,7 +16,7 @@ class Tip < ActiveRecord::Base
     :within => 6..80, 
     :if => lambda {|tip| tip.errors.on(:title).nil?}
 
-  named_scope :for_public, :conditions => ["state = ? OR state = ?", STATES[:unflagged], STATES[:allowed]], :order => "created_at DESC"
+  scope :for_public, :conditions => ["state = ? OR state = ?", STATES[:unflagged], STATES[:allowed]], :order => "created_at DESC"
 
   default_scope :order => "created_at DESC"
 

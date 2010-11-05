@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html> 
+<html> 
 <head>
 	<title><%= "#{yield(:title)} - #{slogan}" %></title>
+
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<meta name="author" content="Gavin Morrice" />
 	<meta name="rating" content="general" />
   <meta name="resource-type" content="document" />
-	<meta name="keywords" content="rails, rails tutorials, ruby on rails, tutorials, tips, help, <%= @tip.tag_list if @tip %>" />
+	<meta name="keywords" content="ruby on rails, tutorials, rails, rails tutorials, tips, help, <%= @tip.tag_list if @tip %>" />
 	<%= stylesheet_link_tag %W( reset generic application coderay ), :cache => true %>
 	<%= auto_discovery_link_tag :rss, "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" %>
 	<%= yield(:head) %>
@@ -17,17 +16,19 @@
 	<div id="wrapper">
 		<%- cache("page_header") do -%>
 		<div id="header_div">
+		  
 			<h1 id='main_header'>
-				<%- link_to root_path do -%>
+				<%= link_to root_path do -%>
 					<span class='hidden'>Handy Rails Tips: Ruby On Rails Tips &amp; Tutorials</span>
 					<%= image_tag("logo.gif", :onmouseover => "this.src='/images/logo-hover.gif'", 
 						:onmouseout => "this.src='/images/logo.gif'") %>
-				<%- end -%>
+				<% end -%>
 			</h1>
+			
 			<div id='subscription_div'>
 				<%= subscriber_form "LatestTipsOnHandyrailstipscom", :submit_value => "" %>
 				<div id='rss_div'>
-					<%- link_to "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" do -%>
+					<%= link_to "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" do -%>
 						<%= image_tag("subscribe.png", :alt => "subscribe via RSS") %>
 					<%- end -%>
 				</div>
@@ -37,35 +38,34 @@
 		<div id='navbar'>
 			<ul>
 				<%= content_tag(:li, link_to("home", root_url, :title => "home"), :id => "first_li") %>
-				<%= content_tag(:li, link_to("tips", tips_url, :title => "tips")) %>
+				<%= content_tag(:li, link_to("more tips", tips_url, :title => "tips")) %>
 				<%= content_tag(:li, link_to("write a tip", new_tip_path, :title => "write a tip")) if logged_in? %>
 				<%= content_tag(:li, link_to("about", about_url, :title => "about")) %>
-				<%= content_tag(:li, link_to("profile", my_profile_path)) if logged_in? %>
-				<%= content_tag(:li, link_to("admin", admin_path)) if admin_logged_in? %>
-				<%= content_tag(:li, 
-					(logged_in? ? link_to("log out", logout_path) : link_to("log in", login_path))) %>
+				<%= content_tag(:li) do %>
+				  <%= logged_in? ? link_to("log out", sessions_path, :method => :delete) : link_to("log in", new_session_path) %>
+				<% end %>
 			</ul>
 			<div id='login'>
 			</div>
 		</div>
 		<div id="content">
 			<div id="collapse">
-				<div id='yield'>
-					<%= render 'layouts/flash_notice' unless flash.empty? %>
+			  
+			  <%= render 'layouts/flash_notice' unless flash.empty? %>
+			  
+			  <% if @show_head %>
+			    <h2 class=""><%= link_to yield(:title), params, :class => "tip_title_link" %></h2>
+			  <% end %>
+				
+			  
+				<div id='yield'>				  
+
 					<%= yield %>					
 				</div>
 			</div>
 			<div id='right_bar'>
 				<%= render  'layouts/search_form' %>
-				
-				<%# render @ads %>
-				<!-- 
-				<p class='align_center'>[<%= link_to("advertise here", advertise_path) %>]</p>
-				-->
-				
-				<%= link_to(image_tag("dropbox.png"), "http://www.dropbox.com/referrals/NTY5MDA3NTk5") %>
-				
-				<hr />
+				<br />
 				<%= render  'layouts/google_ads' %>
 			  <br />
 				<%= render  'layouts/amazon' %>
@@ -83,6 +83,11 @@
 	<%= javascript_include_tag :all %>
   <%= javascript_include_tag "http://google-analytics.com/ga.js" if Rails.env == "production" %>
   <%= render 'layouts/google_analytics' if RAILS_ENV == "production" %>
+
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<script type="text/javascript">google.load("elements", "1", {packages: "transliteration"});</script>
+	<script type="text/javascript" src="http://www.google.com/coop/cse/t13n?form=cse-search-box&amp;t13n_langs=en"></script>
+	<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
 
 	
 </body>
