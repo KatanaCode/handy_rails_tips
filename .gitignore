@@ -1,4 +1,6 @@
 .bundle
+app/stylesheets
+vendor/plugins/more
 db/*.sqlite3
 log/*.log
 tmp/**/*
