@@ -1,108 +1,107 @@
 <!DOCTYPE html> 
 <html> 
 <head>
-	<title><%= yield(:title) %> - Ruby on Rails Tutorials</title>
+  <title><%= yield(:title) %> - Ruby on Rails Tutorials</title>
 
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-	<meta name="author" content="Gavin Morrice" />
-	<meta name="rating" content="general" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="author" content="Gavin Morrice" />
+  <meta name="rating" content="general" />
   <meta name="resource-type" content="document" />
-	<meta name="keywords" content="ruby on rails, tutorials, rails, rails tutorials, tips, help, <%= @tip.tag_list if @tip %>" />
-	<%= stylesheet_link_tag %W( reset generic application coderay ), :cache => true %>
-	<%= auto_discovery_link_tag :rss, "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" %>
-	<%= yield(:head) %>
-	<%= csrf_meta_tag %>
-	
+  <meta name="keywords" content="ruby on rails, tutorials, rails, rails tutorials, tips, help, <%= @tip.tag_list if @tip %>" />
+  <%= stylesheet_link_tag("all") %>
+  <%= auto_discovery_link_tag :rss, "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" %>
+  <%= yield(:head) %>
+  <%= csrf_meta_tag %>
+
 </head>
 <body>
-	<div id="wrapper">
-		<%- cache("page_header") do -%>
-		<div id="header_div">
-		  
-			<h1 id='main_header'>
-				<%= link_to root_path do -%>
-					<span class='hidden'>Handy Rails Tips: Ruby On Rails Tips &amp; Tutorials</span>
-					<%= image_tag("logo.gif", :onmouseover => "this.src='/images/logo-hover.gif'", 
-						:onmouseout => "this.src='/images/logo.gif'") %>
-				<% end -%>
-			</h1>
-			
-			<div id='subscription_div'>
-				<%= subscriber_form "LatestTipsOnHandyrailstipscom", :submit_value => "" %>
-				<div id='rss_div'>
-					<%= link_to "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" do -%>
-						<%= image_tag("subscribe.png", :alt => "subscribe via RSS") %>
-					<%- end -%>
-				</div>
-			</div>
-		</div>
-		<%- end -%>
-		<div id='navbar'>
-			<ul>
-				<%= content_tag(:li, link_to("write a tip", new_tip_path, :title => "write a tip")) if logged_in? %>
-				<%= content_tag(:li, link_to("about", about_url, :title => "about")) %>
-				<%= content_tag(:li) do %>
-				  <% if logged_in? %>
-				    <%= link_to("log out", session_path, :method => :delete) %>
-				  <% else %>
-				    <%= link_to("log in", new_session_path) %>
-				  <% end %>
-				<% end %>
-			</ul>
+  <div id="wrapper">
+    <%- cache("page_header") do -%>
+    <div id="header_div">
+      <h1 id='main_header'>
+        <%= link_to root_path do -%>
+        <span class='hidden'>Handy Rails Tips: Ruby On Rails Tips &amp; Tutorials</span>
+        <%= image_tag("logo.gif", :onmouseover => "this.src='/images/logo-hover.gif'", :onmouseout => "this.src='/images/logo.gif'") %>
+        <% end -%>
+      </h1>
 
-		</div>
-		<div id="content">
-			<div id="collapse">
-			  <%= render 'layouts/flash_notice' unless flash.empty? %>
-			  
-			  <% if @show_head %>
-			    <h2 class=""><%= link_to yield(:title), params, :class => "tip_title_link" %></h2>
-			  <% end %>				
-			  
-			  <div id='yield'>				  
+      <div id='subscription_div'>
+        <%= subscriber_form "LatestTipsOnHandyrailstipscom", :submit_value => "" %>
+        <div id='rss_div'>
+          <%= link_to "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" do -%>
+          <%= image_tag("subscribe.png", :alt => "subscribe via RSS") %>
+          <%- end -%>
+        </div>
+      </div>
+    </div>
+    <%- end -%>
+    <div id='navbar'>
+      <ul>
+        <%= content_tag(:li, link_to("write a tip", new_tip_path, :title => "write a tip")) if logged_in? %>
+        <%= content_tag(:li, link_to("about", about_url, :title => "about")) %>
+        <%= content_tag(:li) do %>
+        <% if logged_in? %>
+        <%= link_to("log out", session_path, :method => :delete) %>
+        <% else %>
+        <%= link_to("log in", new_session_path) %>
+        <% end %>
+        <% end %>
+      </ul>
 
-					<%= yield %>					
-				</div>
-				
-  			<div id='right_bar'>
-  				<%= render  'layouts/search_form' %>
-  				<br />
-  				<%= render  'layouts/google_ads' %>
-  			  <br />
-  				<%= render  'layouts/amazon' %>
-  				<br />
-  				<% unless controller.controller_name == "about" %>
-    				<h3 class="archive">Archive</h3>
-    				<% cache("tips_list") do %>
-    				  <ul id="tips_list">
-    				    <% Tip.order("id DESC").each do |t| %>
-    				      <li><%= link_to(t.title, t) %></li>
-    				    <% end %>
-    				  </ul>
-    				<% end %>
-  				<% end %>
-  			</div>
-			  
-			</div>
-			<%= clearfix %>
-		</div>
-		
-		<div id="push"></div>
-		
-	</div>
-	<div id="footer">
-		<p class='float_left'>Site by <a href="http://gavinmorrice.com">Gavin Morrice</a> &copy; 2009 - <%= Date.today.year %></p>
-		<p class='float_right'><%= render 'layouts/cc'%></p>
-	</div>
-	
-	<%= javascript_include_tag %w{ hrt 
-	  http://www.google.com/jsapi 
-	  http://google-analytics.com/ga.js
-	  http://www.google.com/coop/cse/t13n?form=cse-search-box&amp;t13n_langs=en
-	  http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en
-	}, :cache => true %>
-  <%= render 'layouts/google_analytics' if Rails.env == "production" %>
-	<script type="text/javascript">google.load("elements", "1", {packages: "transliteration"});</script>
-	
+    </div>
+    <div id="content">
+      <div id="collapse">
+        <%= render 'layouts/flash_notice' unless flash.empty? %>
+
+        <% if @show_head %>
+        <h2 class=""><%= link_to yield(:title), params, :class => "tip_title_link" %></h2>
+        <% end %>				
+
+        <div id='yield'>				  
+
+          <%= yield %>					
+        </div>
+
+        <div id='right_bar'>
+          <%= render  'layouts/search_form' %>
+          <br />
+          <%= render  'layouts/google_ads' %>
+          <br />
+          <%= render  'layouts/amazon' %>
+          <br />
+          <% unless controller.controller_name == "about" %>
+          <h3 class="archive">Archive</h3>
+          <% cache("tips_list") do %>
+          <ul id="tips_list">
+            <% Tip.order("id DESC").each do |t| %>
+            <li><%= link_to(t.title, t) %></li>
+            <% end %>
+          </ul>
+          <% end %>
+          <% end %>
+        </div>
+
+      </div>
+      <%= clearfix %>
+    </div>
+
+    <div id="push"></div>
+
+  </div>
+  <div id="footer">
+    <p class='float_left'>Site by <a href="http://gavinmorrice.com">Gavin Morrice</a> &copy; 2009 - <%= Date.today.year %></p>
+    <p class='float_right'>
+      <a rel="license" href="http://creativecommons.org/licenses/by/2.5/scotland/">
+        <img alt="Creative Commons License" style="border-width:0"  src="http://i.creativecommons.org/l/by/2.5/scotland/80x15.png" />
+      </a>
+    </p>
+  </div>
+
+  <%= javascript_include_tag(["hrt.js"], :cache => true) %>
+  <%= javascript_include_tag("http://www.google.com/jsapi", "http://google-analytics.com/ga.js",  "http://www.google.com/coop/cse/t13n?form=cse-search-box&amp;t13n_langs=en",  "http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en") %>
+
+  <%= render('layouts/google_analytics') if Rails.env == "production" %>
+  <script type="text/javascript">google.load("elements", "1", {packages: "transliteration"});</script>
+
 </body>
 </html>
