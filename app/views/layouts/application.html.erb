@@ -11,6 +11,8 @@
 	<%= stylesheet_link_tag %W( reset generic application coderay ), :cache => :all %>
 	<%= auto_discovery_link_tag :rss, "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" %>
 	<%= yield(:head) %>
+	<%= csrf_meta_tag %>
+	
 </head>
 <body>
 	<div id="wrapper">
