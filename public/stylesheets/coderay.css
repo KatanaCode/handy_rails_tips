@@ -1,59 +1,46 @@
-pre {
-  background: #111111;
-  color: #ffffff;
-  padding: 0.2em;
-  height: auto;
-  width: 100%;
-  overflow: auto;
-}
-div.code {
-  margin: 0.2em;
-  font-size: 1em;
-}
-div.ruby_code span.r { color: #bf7833; }
-div.ruby_code span.fu { color: #fbc66d; }
-div.ruby_code span.k { color: #a5c261; }
-div.ruby_code span.i { color: #a5c261; }
-div.ruby_code span.fl { color: #a5c261; }
-div.ruby_code span.dl { color: #a5c261; }
-div.ruby_code span.ch { color: #519f50; }
-div.ruby_code span.cl { color: #ffffff; }
-div.ruby_code span.idl { color: #ffffff; }
-div.ruby_code span.il { color: #ffffff; }
-div.ruby_code span.co { color: #c73c30; }
-div.ruby_code span.c {
-  color: #b39258;
-  font-style: italic;
-}
-div.ruby_code span.iv { color: #d0c6f0; }
-div.ruby_code span.cv { color: #d0c6f0; }
-div.ruby_code span.sy { color: #6e9cb5; }
-div.ruby_code span.pc { color: #d0c6f0; }
-div.ruby_code span.ta { color: #fbc66d; }
-div.ruby_code span.an { color: #fbc66d; }
-div.ruby_code span.kw { color: #fbc66d; }
-div.ruby_code span.ke { color: #6e9cb5; }
-div.ruby_code span.vl { color: #a5c261; }
-div.ruby_code span.cr { color: #6e9cb5; }
-div.rhtml_code span.an { color: #fbc66d; }
-div.rhtml_code span.dl { color: #a5c261; }
-div.rhtml_code span.idl { color: #ffffff; }
-div.rhtml_code span.il { color: #ffffff; }
-div.rhtml_code span.iv { color: #d0c6f0; }
-div.rhtml_code span.k { color: #a5c261; }
-div.rhtml_code span.r { color: #bf7833; }
-div.rhtml_code span.s { color: #ffffff; }
-div.rhtml_code span.sy { color: #6e9cb5; }
-div.rhtml_code span.ta { color: #fbc66d; }
-div.css_code span.k { color: #a5c261; }
-div.css_code span.c { color: #b39258; }
-div.css_code span.cl { color: #fbc66d; }
-div.css_code span.co { color: #fbc66d; }
-div.css_code span.cr { color: #6e9cb5; }
-div.css_code span.fl { color: #a5c261; }
-div.css_code span.ke { color: #6e9cb5; }
-div.css_code span.kw { color: #fbc66d; }
-div.css_code span.vl { color: #a5c261; }
-div.yaml_code span.c { color: #b39258; }
-div.yaml_code span.ke { color: #fbc66d; }
-div.yaml_code span.s { color: #a5c261; }
+pre{background:#111111;color:#ffffff;padding:0.2em;height:auto;width:100%;overflow:auto;}
+div.code{margin:0.2em;font-size:1em;}
+div.ruby_code span.r{color:#bf7833;}
+div.ruby_code span.fu{color:#fbc66d;}
+div.ruby_code span.k{color:#a5c261;}
+div.ruby_code span.i{color:#a5c261;}
+div.ruby_code span.fl{color:#a5c261;}
+div.ruby_code span.dl{color:#a5c261;}
+div.ruby_code span.ch{color:#519f50;}
+div.ruby_code span.cl{color:#ffffff;}
+div.ruby_code span.idl{color:#ffffff;}
+div.ruby_code span.il{color:#ffffff;}
+div.ruby_code span.co{color:#c73c30;}
+div.ruby_code span.c{color:#b39258;font-style:italic;}
+div.ruby_code span.iv{color:#d0c6f0;}
+div.ruby_code span.cv{color:#d0c6f0;}
+div.ruby_code span.sy{color:#6e9cb5;}
+div.ruby_code span.pc{color:#d0c6f0;}
+div.ruby_code span.ta{color:#fbc66d;}
+div.ruby_code span.an{color:#fbc66d;}
+div.ruby_code span.kw{color:#fbc66d;}
+div.ruby_code span.ke{color:#6e9cb5;}
+div.ruby_code span.vl{color:#a5c261;}
+div.ruby_code span.cr{color:#6e9cb5;}
+div.rhtml_code span.an{color:#fbc66d;}
+div.rhtml_code span.dl{color:#a5c261;}
+div.rhtml_code span.idl{color:#ffffff;}
+div.rhtml_code span.il{color:#ffffff;}
+div.rhtml_code span.iv{color:#d0c6f0;}
+div.rhtml_code span.k{color:#a5c261;}
+div.rhtml_code span.r{color:#bf7833;}
+div.rhtml_code span.s{color:#ffffff;}
+div.rhtml_code span.sy{color:#6e9cb5;}
+div.rhtml_code span.ta{color:#fbc66d;}
+div.css_code span.k{color:#a5c261;}
+div.css_code span.c{color:#b39258;}
+div.css_code span.cl{color:#fbc66d;}
+div.css_code span.co{color:#fbc66d;}
+div.css_code span.cr{color:#6e9cb5;}
+div.css_code span.fl{color:#a5c261;}
+div.css_code span.ke{color:#6e9cb5;}
+div.css_code span.kw{color:#fbc66d;}
+div.css_code span.vl{color:#a5c261;}
+div.yaml_code span.c{color:#b39258;}
+div.yaml_code span.ke{color:#fbc66d;}
+div.yaml_code span.s{color:#a5c261;}
