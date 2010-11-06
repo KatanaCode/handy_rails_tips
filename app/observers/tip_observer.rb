@@ -18,7 +18,7 @@ class TipObserver < ActiveRecord::Observer
   
   
   def ping_google(tip)
-    if RAILS_ENV == 'production' && tip.safe?
+    if Rails.env == 'production' && tip.safe?
       response = Net::HTTP.get('www.google.com', '/ping?sitemap=' + URI.escape(sitemap_url))
       tip.logger.info "[info]Pinged Google Successfully[/info]" unless response.scan("Sitemap Notification Received").empty?
     else

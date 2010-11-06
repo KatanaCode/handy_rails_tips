@@ -8,7 +8,7 @@
 	<meta name="rating" content="general" />
   <meta name="resource-type" content="document" />
 	<meta name="keywords" content="ruby on rails, tutorials, rails, rails tutorials, tips, help, <%= @tip.tag_list if @tip %>" />
-	<%= stylesheet_link_tag %W( reset generic application coderay ), :cache => :all %>
+	<%= stylesheet_link_tag %W( reset generic application coderay ), :cache => "all" %>
 	<%= auto_discovery_link_tag :rss, "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" %>
 	<%= yield(:head) %>
 	<%= csrf_meta_tag %>
@@ -100,8 +100,8 @@
 	  http://google-analytics.com/ga.js
 	  http://www.google.com/coop/cse/t13n?form=cse-search-box&amp;t13n_langs=en
 	  http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en
-	}, :cache => :all %>
-  <%= render 'layouts/google_analytics' if RAILS_ENV == "production" %>
+	}, :cache => "all" %>
+  <%= render 'layouts/google_analytics' if Rails.env == "production" %>
 	<script type="text/javascript">google.load("elements", "1", {packages: "transliteration"});</script>
 	
 </body>
