@@ -8,6 +8,10 @@
   <meta name="rating" content="general" />
   <meta name="resource-type" content="document" />
   <meta name="keywords" content="ruby on rails, tutorials, rails, rails tutorials, tips, help, <%= @tip.tag_list if @tip %>" />
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
   <%= stylesheet_link_tag("all") %>
   <%= auto_discovery_link_tag :rss, "http://feeds2.feedburner.com/LatestTipsOnHandyrailstipscom" %>
   <%= yield(:head) %>
@@ -35,8 +39,8 @@
       </div>
     </div>
     <%- end -%>
-    <div id='navbar'>
-      <ul>
+    <div id="navbar">
+      <nav>
         <%= content_tag(:li, link_to("write a tip", new_tip_path, :title => "write a tip")) if logged_in? %>
         <%= content_tag(:li, link_to("about", about_url, :title => "about")) %>
         <%= content_tag(:li) do %>
@@ -46,19 +50,16 @@
         <%= link_to("log in", new_session_path) %>
         <% end %>
         <% end %>
-      </ul>
-
+      </nav>
+      
     </div>
+
+
     <div id="content">
       <div id="collapse">
         <%= render 'layouts/flash_notice' unless flash.empty? %>
 
-        <% if @show_head %>
-        <h2 class=""><%= link_to yield(:title), params, :class => "tip_title_link" %></h2>
-        <% end %>				
-
         <div id='yield'>				  
-
           <%= yield %>					
         </div>
 
@@ -97,7 +98,7 @@
     </p>
   </div>
 
-  <%= javascript_include_tag(["hrt.js"], :cache => true) %>
+  <%= javascript_include_tag("jquery.min.js", "hrt.js") %>
   <%= javascript_include_tag("http://www.google.com/jsapi", "http://google-analytics.com/ga.js",  "http://www.google.com/coop/cse/t13n?form=cse-search-box&amp;t13n_langs=en",  "http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en") %>
 
   <%= render('layouts/google_analytics') if Rails.env == "production" %>

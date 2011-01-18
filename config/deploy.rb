@@ -1,5 +1,5 @@
 set :application, "handy_rails_tips"
-set :user, "root"
+set :user, "gavin"
 set :runner, user
 
 set :port, 9021

@@ -1,11 +1,6 @@
 <%- title "#{h @tip.title}" -%>
 		
-	<div id='tip_body_div'>
-		<%- cache :controller => "tips", :action => "show", :id => @tip.id do -%>	
-	  	<%= tip_body(@tip.body).html_safe %>
-		<%- end -%>
-	</div>
-	
+	<%= render(@tip) %>
 	<p class='align_right'>
 		<script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=d8ddea73-a9e8-4458-9f42-274e75282826&amp;type=website&amp;headerfg=%23f8f8f8&amp;headerbg=%23068ac7&amp;headerTitle=Send%20this%20tip%20via...">
 		</script>

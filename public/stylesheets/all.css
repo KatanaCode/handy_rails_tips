@@ -49,12 +49,12 @@ form#subscribe_form{width:13.5em;margin:0.5em 0;height:auto;background:#ffffff;b
 #submit_subscriber{background:#ffffff url(/images/mail.gif) 50% 1px no-repeat;height:20px;width:33px;border:none;margin:0 0.2em;cursor:pointer;}
 div#rss_div{width:100%;margin:auto;background-color:transparent;height:auto;}
 #rss_div:hover{border-bottom:thin dotted #dddddd;}
-div#navbar{height:auto;min-width:960px;width:auto !important;width:100%;padding:0.4em 0;background:#333333;border-bottom:0.2em solid #dddddd;overflow:auto;}
-#navbar ul{width:auto;float:right;margin-right:2em;}
-#navbar ul li{float:left;display:block;width:9em;text-align:center;padding:0.2em 0;border-left:thin solid #666666;}
-#navbar ul li#first_li{border-left:none;}
-#navbar ul li:hover{background:#555555;}
-#navbar ul li a{display:inline-block;width:100%;color:#dddddd;}
+#navbar{height:auto;width:100%;padding:0.4em 0;background:#333333;border-bottom:0.2em solid #dddddd;overflow:auto;}
+#navbar {width:auto;float:right;margin-right:2em;}
+#navbar  li{float:left;display:block;width:9em;text-align:center;padding:0.2em 0;border-left:thin solid #666666;}
+#navbar  li#first_li{border-left:none;}
+#navbar  li:hover{background:#555555;}
+#navbar  li a{display:inline-block;width:100%;color:#dddddd;}
 div#content{width:100%;margin:0;padding:0;background:#f6f9f9 url(/images/grad.png) repeat-x scroll left top;border-bottom:thin solid #111111;}
 #collapse{padding:0;margin:0 auto;width:72em;}
 h2{padding:2em 0 0;}

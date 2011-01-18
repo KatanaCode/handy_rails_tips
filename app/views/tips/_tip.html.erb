@@ -1,13 +1,17 @@
 <% cache(tip) do %>	
-<div class='listed_tip'>
-  <div class='tip_number'>tip # <%= tip.id %></div>
+  <%= content_tag_for :article, tip do %>
+  <header>
+    <%= content_tag :h1, link_to(tip.title, tip, :class =>"tip_title_link") %>
+    <time class="align_right" datetime="<%= tip.created_at.strftime("%Y-%m%-%d")%>" pubdate>
+      <%= tip.created_at.to_s(:short) %>
+    </time>
+  </header>
 
-  <%= div_for tip do -%>
-    <%= content_tag :h3, link_to(tip.title, tip, :class =>"tip_title_link") %>
-    <%= tip_body(tip.body).html_safe %>
-    <p class='float_right grey'><%= comments_count_link(tip, :url => tip_path(tip)) %></p>
-  <%- end -%>
+  <%= tip_body(tip.body).html_safe %>
+
+  <p class='float_right grey'><%= comments_count_link(tip, :url => tip_path(tip)) %></p>
+  <%- end -%>  
+
 
   <%= clearfix %>	
-</div>
 <% end %>
